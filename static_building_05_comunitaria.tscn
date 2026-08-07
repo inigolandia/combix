@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3]
+
+[sub_resource type="StandardMaterial3D" id="Material_building_05"]
+albedo_color = Color(0.45, 0.55, 0.68, 1)
+roughness = 0.72
+metallic = 0.05
+
+[sub_resource type="BoxMesh" id="Mesh_building_05"]
+size = Vector3(0.83, 0.16, 1.07)
+
+[sub_resource type="BoxShape3D" id="Shape_building_05"]
+size = Vector3(0.83, 0.16, 1.07)
+
+[node name="StaticBuilding05_Comunitaria" type="StaticBody3D"]
+collision_layer = 1
+collision_mask = 1
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.084, 0)
+mesh = SubResource("Mesh_building_05")
+material_override = SubResource("Material_building_05")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.084, 0)
+shape = SubResource("Shape_building_05")

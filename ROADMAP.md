@@ -31,10 +31,11 @@ res://.summerrules).
 
 - Alpha 1.1 "Base tecnica estavel": CONCLUIDA.
 - Alpha 1.2 "Mapa estatico controlado": CONCLUIDA e confirmada pelo utilizador em Play.
-- Alpha 1.3 "Edificios estaticos e colisoes simplificadas": EM ANDAMENTO. Quatro
+- Alpha 1.3 "Edificios estaticos e colisoes simplificadas": EM ANDAMENTO. Cinco
   edificios estaticos aplicados e confirmados pelo utilizador (edificio 01 -
   hipermercado de res-do-chao, edificio 02 - residencial pequeno, edificio 03 -
-  moradia geminada e edificio 04 - comercio local); ver secao 6.
+  moradia geminada, edificio 04 - comercio local e edificio 05 - edificio
+  comunitario); ver secao 6.
 
 ## 4. Alpha 1.1 - Base tecnica estavel (concluida)
 
@@ -103,7 +104,7 @@ Dependencias:
   e res://gis/sector1_building_footprints_batch.res.
 - Decisoes de desempenho (colisao simplificada vs sem colisao) a confirmar.
 
-Estado atual (quatro edificios estaticos aplicados e confirmados pelo utilizador):
+Estado atual (cinco edificios estaticos aplicados e confirmados pelo utilizador):
 - Edificio 01 - hipermercado de res-do-chao:
   - Nova cena res://static_building_01_apartamento.tscn integrada na cena principal
     sob Main/StaticBuildings/StaticBuilding01_Apartamento, com MeshInstance3D e
@@ -135,6 +136,15 @@ Estado atual (quatro edificios estaticos aplicados e confirmados pelo utilizador
     altura 0.14 unidades = 6.3 m, colisao e resultado visual confirmados.
   - Jogador colocado temporariamente perto do edificio em (-10, 0.021393, 10)
     para o teste.
+- Edificio 05 - edificio comunitario:
+  - Nova cena res://static_building_05_comunitaria.tscn integrada na cena
+    principal sob Main/StaticBuildings/StaticBuilding05_Comunitaria, derivada do
+    marcador Placa_13_Comunitaria_01 em (0, 0, 12), com MeshInstance3D e
+    CollisionShape3D simples alinhados.
+  - Confirmado pelo utilizador: footprint 0.83 x 1.07 unidades, altura 0.16
+    unidades, colisao e resultado visual confirmados.
+  - Jogador colocado temporariamente perto do edificio em (3, 0.021393, 12) para
+    o teste.
 - Correcao de flicker das bases (aplicada e confirmada pelo utilizador como
   perfeita): as bases dos dois edificios receberam um offset geometrico minimo de
   0.004 unidades para eliminar o flicker, sem alterar a escala horizontal nem a
@@ -158,16 +168,16 @@ Criterios de saida:
   estaticos do Setor 1 continuam por converter.
 
 Proxima acao:
-- Criar um edificio comunitario ou industrial representativo e converter os
-  restantes edificios; nao criar esse edificio nesta tarefa e nao inventar ainda
-  o loop principal (gameplay das fases seguintes nao esta decidido).
+- Criar um armazem industrial representativo e converter os restantes edificios
+  do Setor 1; nao criar esse edificio nesta tarefa e nao inventar ainda o loop
+  principal (gameplay das fases seguintes nao esta decidido).
 
 Nota sobre commit de marco:
-- O remoto esta sincronizado com origin/main no commit 3de6798. As alteracoes
-  atuais (main.tscn com StaticBuilding04_Comercio, a nova cena
-  static_building_04_comercio.tscn e esta atualizacao documental) estao prontas
-  para o proximo commit; este documento e o DEVELOPMENT_LOG.md acompanham esse
-  commit, executado pelo coordenador/utilizador.
+- O remoto esta sincronizado com origin/main no commit cde5a0c. As alteracoes
+  atuais (main.tscn com StaticBuilding05_Comunitaria, a nova cena
+  static_building_05_comunitaria.tscn e esta atualizacao documental) estao
+  prontas para o proximo commit; este documento e o DEVELOPMENT_LOG.md
+  acompanham esse commit, executado pelo coordenador/utilizador.
 
 Riscos:
 - Muitos shapes de colisao podem degradar o desempenho; a decisao atual e que os
@@ -183,10 +193,11 @@ Riscos:
   reais (res://world_scale.gd, res://.summerrules).
 - Mundo: Washington ficcional inspirada na real; dados oficiais quando disponiveis,
   estimativas claramente identificadas quando nao existirem.
-- Repositorio Git em main; ultima sincronizacao com origin/main no commit 3de6798;
-  as alteracoes atuais (main.tscn com StaticBuilding04_Comercio, a nova cena
-  static_building_04_comercio.tscn e esta atualizacao documental) seguem locais e
-  prontas para o proximo commit (https://github.com/inigolandia/combix.git).
+- Repositorio Git em main; ultima sincronizacao com origin/main no commit cde5a0c;
+  as alteracoes atuais (main.tscn com StaticBuilding05_Comunitaria, a nova cena
+  static_building_05_comunitaria.tscn e esta atualizacao documental) seguem
+  locais e prontas para o proximo commit
+  (https://github.com/inigolandia/combix.git).
 
 ## 8. Riscos conhecidos
 
