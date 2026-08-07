@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/images/img-ef7687cb-9a4d-45bd-9c51-dc9b6a2b5e30-1783026728974-0_1783026728974_3m1g53ow.png" id="1_sidewalk"]
+
+[resource]
+albedo_texture = ExtResource("1_sidewalk")
+roughness = 0.94
+metallic = 0.0
+specular = 0.0
+uv1_triplanar = true
+uv1_triplanar_sharpness = 2.0
+uv1_scale = Vector3(0.35, 0.35, 0.35)
+texture_filter = 1
