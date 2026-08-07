@@ -31,11 +31,11 @@ res://.summerrules).
 
 - Alpha 1.1 "Base tecnica estavel": CONCLUIDA.
 - Alpha 1.2 "Mapa estatico controlado": CONCLUIDA e confirmada pelo utilizador em Play.
-- Alpha 1.3 "Edificios estaticos e colisoes simplificadas": EM ANDAMENTO. Cinco
+- Alpha 1.3 "Edificios estaticos e colisoes simplificadas": EM ANDAMENTO. Seis
   edificios estaticos aplicados e confirmados pelo utilizador (edificio 01 -
   hipermercado de res-do-chao, edificio 02 - residencial pequeno, edificio 03 -
-  moradia geminada, edificio 04 - comercio local e edificio 05 - edificio
-  comunitario); ver secao 6.
+  moradia geminada, edificio 04 - comercio local, edificio 05 - edificio
+  comunitario e edificio 06 - armazem industrial); ver secao 6.
 
 ## 4. Alpha 1.1 - Base tecnica estavel (concluida)
 
@@ -104,7 +104,7 @@ Dependencias:
   e res://gis/sector1_building_footprints_batch.res.
 - Decisoes de desempenho (colisao simplificada vs sem colisao) a confirmar.
 
-Estado atual (cinco edificios estaticos aplicados e confirmados pelo utilizador):
+Estado atual (seis edificios estaticos aplicados e confirmados pelo utilizador):
 - Edificio 01 - hipermercado de res-do-chao:
   - Nova cena res://static_building_01_apartamento.tscn integrada na cena principal
     sob Main/StaticBuildings/StaticBuilding01_Apartamento, com MeshInstance3D e
@@ -145,14 +145,28 @@ Estado atual (cinco edificios estaticos aplicados e confirmados pelo utilizador)
     unidades, colisao e resultado visual confirmados.
   - Jogador colocado temporariamente perto do edificio em (3, 0.021393, 12) para
     o teste.
+- Edificio 06 - armazem industrial:
+  - Nova cena res://static_building_06_industrial.tscn integrada na cena
+    principal sob Main/StaticBuildings/StaticBuilding06_Industrial, derivada do
+    marcador Placa_15_Industrial_Armazem_Periferico em (10, 0, 12), com
+    MeshInstance3D e CollisionShape3D simples alinhados.
+  - Confirmado pelo utilizador: footprint 1.66 x 2.38 unidades (74.7 x 107.1 m
+    reais), altura 0.22 unidades = 9.9 m, colisao e resultado visual confirmados
+    como perfeitos, incluindo a base sem flicker.
+  - Jogador corrigido para (8, 0.021393, 12.5), dentro do Setor 1 e perto do
+    armazem, antes do teste.
 - Correcao de flicker das bases (aplicada e confirmada pelo utilizador como
   perfeita): as bases dos dois edificios receberam um offset geometrico minimo de
   0.004 unidades para eliminar o flicker, sem alterar a escala horizontal nem a
   altura alvo de cada edificio.
+- Correcao anti-flicker da base do armazem industrial: offset Y corrigido de
+  0.111 para 0.114, seguindo a margem anti-flicker de 0.004 unidades; o utilizador
+  confirmou a base sem flicker e a colisao como perfeitas.
 - Camara ajustada: spring_length passou de 0.35 para 0.20; o utilizador aprovou o
   estado atual resultante.
-- Jogador posicionado perto do edificio para facilitar os testes; a configuracao
-  normal de arranque/GIS permaneceu leve.
+- Jogador corrigido para (8, 0.021393, 12.5), dentro do Setor 1 e perto do
+  armazem industrial, antes do teste; a configuracao normal de arranque/GIS
+  permaneceu leve.
 - BakedMap, volumes low-rise e footprints GIS continuam presentes como referencia;
   as fatias atuais nao substituem nem removem os overlays GIS.
 - A tentativa de atualizacao automatica anterior foi bloqueada apenas porque os
@@ -163,21 +177,25 @@ Criterios de entrada:
 - 1.2 concluida; utilizador avisado e confirma o inicio de 1.3.
 
 Criterios de saida:
-- A definir/confirmar; ainda nao cumpridos. Nao marcar 1.3 como concluida: a
-  biblioteca de tipos estaticos ainda nao esta completa e os restantes edificios
-  estaticos do Setor 1 continuam por converter.
+- A definir/confirmar; ainda nao cumpridos. Nao marcar 1.3 como concluida: os seis
+  tipos estaticos estao confirmados, mas falta consolidar a biblioteca/colocacoes
+  e decidir o papel dos blockouts GIS antes de iniciar Alpha 1.4; os restantes
+  edificios estaticos do Setor 1 continuam por converter.
 
 Proxima acao:
-- Criar um armazem industrial representativo e converter os restantes edificios
-  do Setor 1; nao criar esse edificio nesta tarefa e nao inventar ainda o loop
-  principal (gameplay das fases seguintes nao esta decidido).
+- Consolidar a biblioteca/colocacoes dos seis tipos estaticos confirmados e
+  decidir o papel dos blockouts GIS antes de iniciar Alpha 1.4; converter os
+  restantes edificios estaticos do Setor 1. Alpha 1.4 nao e iniciada nesta tarefa
+  e o loop principal nao esta decidido.
 
 Nota sobre commit de marco:
-- O remoto esta sincronizado com origin/main no commit cde5a0c. As alteracoes
-  atuais (main.tscn com StaticBuilding05_Comunitaria, a nova cena
-  static_building_05_comunitaria.tscn e esta atualizacao documental) estao
-  prontas para o proximo commit; este documento e o DEVELOPMENT_LOG.md
-  acompanham esse commit, executado pelo coordenador/utilizador.
+- O remoto esta sincronizado com origin/main no commit 6352334. As alteracoes
+  atuais (a cena static_building_06_industrial.tscn, a integracao de
+  StaticBuilding06_Industrial em main.tscn, a correcao da posicao do jogador
+  para (8, 0.021393, 12.5), a correcao anti-flicker da base do armazem e esta
+  atualizacao documental) estao prontas para o proximo commit; este documento e
+  o DEVELOPMENT_LOG.md acompanham esse commit, executado pelo
+  coordenador/utilizador.
 
 Riscos:
 - Muitos shapes de colisao podem degradar o desempenho; a decisao atual e que os
@@ -193,10 +211,11 @@ Riscos:
   reais (res://world_scale.gd, res://.summerrules).
 - Mundo: Washington ficcional inspirada na real; dados oficiais quando disponiveis,
   estimativas claramente identificadas quando nao existirem.
-- Repositorio Git em main; ultima sincronizacao com origin/main no commit cde5a0c;
-  as alteracoes atuais (main.tscn com StaticBuilding05_Comunitaria, a nova cena
-  static_building_05_comunitaria.tscn e esta atualizacao documental) seguem
-  locais e prontas para o proximo commit
+- Repositorio Git em main; ultima sincronizacao com origin/main no commit 6352334;
+  as alteracoes atuais (a cena static_building_06_industrial.tscn, a integracao
+  de StaticBuilding06_Industrial em main.tscn, a correcao da posicao do jogador,
+  a correcao anti-flicker da base do armazem e esta atualizacao documental)
+  seguem locais e prontas para o proximo commit
   (https://github.com/inigolandia/combix.git).
 
 ## 8. Riscos conhecidos

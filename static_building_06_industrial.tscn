@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dfh2qi4egsfvg"]
+
+[sub_resource type="StandardMaterial3D" id="Material_building_06"]
+albedo_color = Color(0.52, 0.56, 0.62, 1)
+metallic = 0.18
+roughness = 0.68
+
+[sub_resource type="BoxMesh" id="Mesh_building_06"]
+size = Vector3(1.66, 0.22, 2.38)
+
+[sub_resource type="BoxShape3D" id="Shape_building_06"]
+size = Vector3(1.66, 0.22, 2.38)
+
+[node name="StaticBuilding06_Industrial" type="StaticBody3D" unique_id=107902082]
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1666071180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.114, 0)
+material_override = SubResource("Material_building_06")
+mesh = SubResource("Mesh_building_06")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1143754711]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.114, 0)
+shape = SubResource("Shape_building_06")
