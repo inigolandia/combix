@@ -11,13 +11,15 @@ sem erros em prova de funcionalidade global.
 
 - Alpha 1.1: concluida.
 - Alpha 1.2: concluida e confirmada pelo utilizador em Play.
-- Alpha 1.3: em andamento (seis edificios estaticos aplicados e confirmados pelo
-  utilizador - edificio 01 hipermercado de res-do-chao, edificio 02 residencial
-  pequeno, edificio 03 moradia geminada, edificio 04 comercio local, edificio 05
-  edificio comunitario e edificio 06 armazem industrial; consolidacao tecnica
-  como PackedScene e reparacao do parse implementadas e verificadas
-  tecnicamente; playtest manual pos-consolidacao e decisao sobre blockouts GIS
-  pendentes; ver ROADMAP.md).
+- Alpha 1.3: concluida e confirmada pelo utilizador (seis edificios estaticos -
+  edificio 01 hipermercado de res-do-chao, edificio 02 residencial pequeno,
+  edificio 03 moradia geminada, edificio 04 comercio local, edificio 05 edificio
+  comunitario e edificio 06 armazem industrial; consolidacao tecnica como
+  PackedScene sob Main/StaticBuildings e reparacao do parse de main.tscn
+  implementadas e verificadas; playtest manual pos-consolidacao confirmado como
+  perfeito; ver ROADMAP.md).
+- Alpha 1.4: proxima sub-fase (definicao do loop principal), nao iniciada; o
+  loop principal ainda nao esta decidido.
 
 ## Marco: Alpha 1.1 "Base tecnica estavel" (concluida)
 
@@ -107,7 +109,7 @@ futuras, outros dispositivos).
 - Desempenho a longo prazo com a cena completa e futuras adicoes (1.3 e seguintes).
 - Sistemas de gameplay das fases seguintes (nao decididos; ver ROADMAP.md).
 
-## Marco: Alpha 1.3 "Edificios estaticos e colisoes simplificadas" (em andamento - seis edificios confirmados; consolidacao PackedScene e reparacao do parse verificadas tecnicamente; playtest manual pendente)
+## Marco: Alpha 1.3 "Edificios estaticos e colisoes simplificadas" (concluida e confirmada)
 
 ### O que foi implementado (aplicado)
 
@@ -221,11 +223,14 @@ futuras, outros dispositivos).
 - Correcao de flicker das bases confirmada pelo utilizador como perfeita.
 - Camara ajustada para spring_length 0.20; o utilizador aprovou o estado atual
   resultante.
+- Playtest manual pos-consolidacao (apos a consolidacao PackedScene e a
+  reparacao do parse): realizado pelo utilizador e confirmado como perfeito
+  ("tudo esta bem, vamos continuar"); fecho de Alpha 1.3 confirmado.
 
 Nota de honestidade: as confirmacoes acima cobrem os comportamentos listados naquela
-execucao (seis edificios, colisoes, flicker das bases e camara). Nao provam a
-funcionalidade global, o desempenho continuo nem a biblioteca completa de tipos
-estaticos.
+execucao (seis edificios, colisoes, flicker das bases, camara e playtest
+pos-consolidacao). Nao provam a funcionalidade global, o desempenho continuo, a
+biblioteca completa de tipos estaticos, a arte final nem o conteudo do jogo.
 
 ### Auditoria/consolidacao tecnica (PackedScene) e reparacao do parse
 
@@ -252,30 +257,41 @@ Verificado tecnicamente (nao substitui playtest manual):
 - Os diagnostics especificos ficaram limpos e uma verificacao tecnica arrancou
   sem erros observados.
 
-Nao verificado:
-- Playtest manual pos-consolidacao pelo utilizador ainda nao foi feito; as
-  confirmacoes em Play registadas acima referem-se ao estado anterior a
-  consolidacao. O comportamento visual e de colisao apos a consolidacao
-  PackedScene e a reparacao do parse precisa de ser confirmado pelo utilizador
-  antes do fecho de Alpha 1.3.
+Confirmado apos a consolidacao:
+- Playtest manual pos-consolidacao realizado pelo utilizador apos a consolidacao
+  PackedScene e a reparacao do parse; o utilizador confirmou "tudo esta bem,
+  vamos continuar" e o playtest foi considerado perfeito para o fecho de
+  Alpha 1.3. Essa confirmacao cobre o estado consolidado final dos seis
+  edificios e o arranque preservado; nao prova o jogo completo.
+
+### Limitacoes fora de Alpha 1.3 (registadas no fecho)
+
+- Blockouts GIS continuam presentes na arvore como referencia visual; nao sao
+  substituidos por esta sub-fase.
+- Footprints GIS continuam sem colisoes de runtime por razoes de desempenho.
+- O loop principal ainda nao esta decidido; Alpha 1.4 e a sub-fase para o
+  definir, sem inventar genero, missao ou atividade principal.
+- Arte final e conteudo do jogo ainda pendentes.
+- Os restantes edificios estaticos do Setor 1 continuam por converter (planeado,
+  fora desta sub-fase).
+- Decisao registada: o GIS permanece como fonte de referencia/edicao e o runtime
+  normal usa BakedMap; os blockouts GIS ficam disponiveis ate decisao visual
+  posterior.
 
 ### Nao verificado / desconhecido
 
-- Playtest manual pos-consolidacao pelo utilizador ainda nao foi feito; as
-  confirmacoes em Play dos seis edificios referem-se ao estado anterior a
-  consolidacao PackedScene. O fecho de Alpha 1.3 depende desse playtest e da
-  decisao documentada sobre o papel dos blockouts GIS; Alpha 1.3 permanece em
-  andamento.
-- A consolidacao tecnica foi verificada por recarregamento da cena do disco,
-  diagnostics limpos e arranque tecnico sem erros observados; essa verificacao
-  nao prova o comportamento visual/colisao em Play.
-- Os restantes edificios estaticos do Setor 1 continuam por converter (planeado,
-  nao iniciado nesta tarefa).
+- O playtest manual pos-consolidacao foi realizado e confirmado pelo utilizador
+  como perfeito; a verificacao tecnica (recarregamento da cena do disco,
+  diagnostics limpos e arranque sem erros observados) continua registada como
+  complemento, nao como prova de comportamento em Play.
+- Os restantes edificios estaticos do Setor 1 continuam por converter (fora de
+  Alpha 1.3; planeado, nao iniciado nesta tarefa).
 - Escala, proporcao e colisao foram confirmados apenas para os seis edificios
   atuais; nao cobrem a biblioteca completa nem outros dispositivos.
 - Colisoes completas dos edificios continuam planeadas (decisao de desempenho em
   aberto).
 - Loop principal e gameplay das fases seguintes nao decididos; nao inventar ainda.
+- Arte final e conteudo do jogo ainda pendentes (fora de Alpha 1.3).
 
 ### Ficheiros desta fase
 
@@ -296,11 +312,14 @@ Nao verificado:
 
 ### Commit de marco
 
-- O remoto esta sincronizado com origin/main no commit b0ef068. O Git esta dirty
-  apenas em res://main.tscn e res://static_building_06_industrial.tscn (as
-  alteracoes da consolidacao PackedScene e da reparacao do parse); este documento
-  e o ROADMAP.md passam a acompanhar esse proximo commit, executado pelo
-  coordenador/utilizador. Nao foi executada nenhuma operacao Git nesta tarefa.
+- A consolidacao PackedScene e a reparacao do parse foram consolidadas no commit
+  local a98e604 ("Consolidate Alpha 1.3 building library"); o push automatico
+  desse commit falhou anteriormente e o coordenador/utilizador deve verificar o
+  estado do remoto apos esta atualizacao.
+- Esta atualizacao documental (ROADMAP.md e DEVELOPMENT_LOG.md) fecha Alpha 1.3
+  e prepara o commit de marco de fecho (ex.: "Marco: Alpha 1.3 concluida"), a
+  executar pelo coordenador/utilizador. Nao foi executada nenhuma operacao Git
+  nesta tarefa.
 
 ### Nota sobre a tentativa de atualizacao automatica anterior
 
@@ -310,25 +329,28 @@ Nao verificado:
 
 ### Proxima acao
 
-- Playtest manual pos-consolidacao pelo utilizador (confirmar visual e colisao
-  dos seis edificios apos a consolidacao PackedScene e a reparacao do parse) e,
-  se aprovado, fecho de Alpha 1.3.
-- Decisao documentada sobre o papel dos blockouts GIS (manter como referencia,
-  substituir por edificios proprios ou outra politica) antes de iniciar Alpha 1.4.
+- Fecho documental de Alpha 1.3 concluido (esta atualizacao); commit de marco de
+  fecho preparado na secao "Commit de marco", a executar pelo coordenador/
+  utilizador.
+- Entrar em Alpha 1.4 "Definicao do loop principal" (proxima sub-fase, nao
+  iniciada): decidir e documentar o loop principal antes de qualquer gameplay;
+  o loop ainda nao esta decidido e nao deve ser inventado. Esta atualizacao
+  avisa o utilizador da entrada na nova sub-fase (regra de comunicacao do
+  roadmap em res://.summerrules).
 - Converter os restantes edificios estaticos do Setor 1 (planeado, nao iniciado
   nesta tarefa).
-- Nao iniciar Alpha 1.4 nesta tarefa nem criar outro edificio.
-- Nao iniciar ainda o loop principal: gameplay das fases seguintes nao esta
-  decidido.
+- Nao criar loop de gameplay, missoes, NPCs, UI nem assets nesta tarefa.
 
 ## Repositorio Git (estado conhecido)
 
-- Ramo: main. O remoto esta sincronizado com origin/main no commit b0ef068. O
-  estado local contem alteracoes nao commitadas: res://main.tscn e
-  res://static_building_06_industrial.tscn (a consolidacao PackedScene e a
-  reparacao do parse), prontas para o proximo commit de marco a executar pelo
-  coordenador/utilizador, acompanhadas por esta atualizacao documental. Nao foi
-  executada nenhuma operacao Git nesta tarefa.
+- Ramo: main. A consolidacao PackedScene e a reparacao do parse de res://main.tscn
+  foram consolidadas no commit local a98e604 ("Consolidate Alpha 1.3 building
+  library"); o push automatico desse commit falhou anteriormente, pelo que o
+  coordenador/utilizador deve verificar o estado do remoto apos esta atualizacao.
+- Esta atualizacao documental (ROADMAP.md e DEVELOPMENT_LOG.md) fecha Alpha 1.3 e
+  prepara o commit de marco de fecho (ex.: "Marco: Alpha 1.3 concluida") a
+  executar pelo coordenador/utilizador. Nao foi executada nenhuma operacao Git
+  nesta tarefa.
 - Remoto: https://github.com/inigolandia/combix.git
 - Commits existentes:
   - e9c1b98: backup inicial do projeto.
@@ -342,10 +364,12 @@ Nao verificado:
     (edificio comunitario).
   - 6352334: ultimo commit remoto conhecido antes das alteracoes do sexto
     edificio (armazem industrial).
-  - b0ef068: commit remoto atual (sincronizado com origin/main), registado antes
-    da consolidacao tecnica dos seis edificios em PackedScene.
-- Nota: este documento e o ROADMAP.md fazem parte do proximo commit de marco; as
-  operacoes Git de marco sao executadas pelo coordenador/utilizador, nao
+  - b0ef068: commit remoto registado antes da consolidacao tecnica dos seis
+    edificios em PackedScene.
+  - a98e604: "Consolidate Alpha 1.3 building library" (commit local da
+    consolidacao PackedScene e da reparacao do parse; push automatico falhou,
+    estado do remoto a verificar pelo coordenador/utilizador).
+- Nota: as operacoes Git de marco sao executadas pelo coordenador/utilizador, nao
   automaticamente.
 
 ## Processo futuro
