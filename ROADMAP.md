@@ -10,7 +10,7 @@ O desenvolvimento esta organizado em quatro grandes fases:
 
 | Fase | Nome | Estado |
 |---|---|---|
-| 1 | Alpha | Em curso (1.1, 1.2 e 1.3 concluidas; 1.4 nao iniciada) |
+| 1 | Alpha | Em curso (1.1, 1.2 e 1.3 concluidas; 1.4 em andamento) |
 | 2 | Beta | Nao iniciada |
 | 3 | Final | Nao iniciada |
 | 4 | Lancamento | Nao iniciada |
@@ -39,8 +39,11 @@ res://.summerrules).
   seis cenas como PackedScene sob Main/StaticBuildings, reparacao do parse de
   main.tscn e playtest manual pos-consolidacao confirmado como perfeito pelo
   utilizador; ver secao 6.
-- Alpha 1.4 "Definicao do loop principal": PROXIMA SUB-FASE, nao iniciada; o
-  loop principal ainda nao esta decidido (ver secao 6.1).
+- Alpha 1.4 "Definicao do loop principal": EM ANDAMENTO; a decisao de design foi
+  registada (RPG narrativo de mundo aberto com loop composto de exploracao
+  urbana, investigacao, missoes/objetivos e sobrevivencia; ver secao 6.1). A
+  sub-fase continua para definir o primeiro slice jogavel, sem implementar
+  gameplay.
 
 ## 4. Alpha 1.1 - Base tecnica estavel (concluida)
 
@@ -267,38 +270,71 @@ Riscos:
   footprints nao tem colisao por razoes de desempenho.
 - Footprints reais podem conter geometrias complexas ou sobrepostas.
 
-## 6.1. Alpha 1.4 - Definicao do loop principal (proxima sub-fase, nao iniciada)
+## 6.1. Alpha 1.4 - Definicao do loop principal (em andamento)
 
-Escopo da sub-fase: decidir e documentar o loop principal do jogo. Ainda nao
-existe uma decisao de gameplay suficientemente especifica (genero, missao ou
-atividade principal nao foram decididos); esta sub-fase comeca por produzir essa
-decisao antes de qualquer implementacao de gameplay.
+Escopo da sub-fase: registar a decisao de design e o loop principal do jogo e
+terminar na definicao do primeiro slice jogavel. Nesta sub-fase nao e
+implementado gameplay; apenas decisoes e documentacao.
 
-Criterios de entrada:
-- Alpha 1.3 concluida e confirmada pelo utilizador (fecho documental nesta
-  atualizacao).
-- Esta atualizacao avisa o utilizador da entrada na nova sub-fase (regra de
-  comunicacao do roadmap em res://.summerrules); o utilizador ja confirmou a
-  continuacao ("vamos continuar").
+Decisao de design registada (visao, aprovada pelo utilizador no questionario da
+sub-fase):
+- Direcao: RPG narrativo de mundo aberto, inspirado numa Washington ficcional,
+  combinando exploracao urbana, investigacao, missoes/objetivos e sobrevivencia.
+- Loop composto (visao): explorar o mundo urbano -> investigar locais e pistas ->
+  cumprir missoes/objetivos -> gerir a sobrevivencia; em liberdade de mundo
+  aberto, com novas descobertas a abrir novos objetivos.
+- Progressao composta (visao): descobertas e locais, objetivos concluidos,
+  reputacao e relacoes, e mundo aberto livre.
+- Papel profissional do personagem: deliberadamente EM ABERTO. O questionario
+  recolheu opcoes (residente/cidadao, investigador, estafeta/entregador, agente
+  de autoridade), mas o utilizador, quando clarificado, escolheu manter a
+  estrutura de papeis em aberto; nenhuma profissao e escolhida nesta fase.
 
-Estado da decisao:
-- O loop principal NAO esta decidido. Este documento nao inventa genero, missao,
-  atividade principal, NPCs, UI nem conteudo; esses itens so entram no roadmap
-  quando existir uma decisao registada.
-- Posicao herdada do fecho de Alpha 1.3: o GIS permanece como fonte de
-  referencia/edicao e o runtime normal usa BakedMap; os blockouts GIS ficam
-  disponiveis como referencia visual ate decisao visual posterior.
+Nao decidido (permanece em aberto nesta sub-fase):
+- Papel profissional concreto do personagem (nenhuma profissao escolhida).
+- Primeiro objetivo/missao concreta do primeiro slice jogavel (a definir dentro
+  da sub-fase, sem inventar conteudo).
+- Regras detalhadas de sobrevivencia (fome, saude, abrigo, clima, etc.).
+- Faccoes, sistemas de combate, narrativa concreta e conteudo detalhado.
 
-Criterios de saida (provisorios, a confirmar no inicio da sub-fase):
-- Decisao documentada do loop principal (o que o jogador faz, objetivo basico e
-  condicao de fim de ciclo) aprovada pelo utilizador e registada no ROADMAP.md e
-  no DEVELOPMENT_LOG.md antes de implementar gameplay.
+Nao implementado (nada de gameplay nesta sub-fase):
+- Nenhum sistema de gameplay, missao, NPC, veiculo, UI, audio, asset, cena ou
+  configuracao de gameplay e criado ou alterado por esta decisao; apenas
+  documentacao em res://.summerrules, ROADMAP.md e DEVELOPMENT_LOG.md.
 
-Proxima acao:
-- Coordenador/utilizador verifica o estado Git (commit local a98e604 e remoto) e
-  executa o commit de marco de fecho de Alpha 1.3.
-- Iniciar Alpha 1.4 com a decisao do loop principal. Alpha 1.4 nao e iniciada
-  nesta tarefa.
+Posicao herdada do fecho de Alpha 1.3:
+- O GIS permanece como fonte de referencia/edicao e o runtime normal usa
+  BakedMap; os blockouts GIS ficam disponiveis como referencia visual ate
+  decisao visual posterior.
+
+Criterios de entrada (cumpridos):
+- Alpha 1.3 concluida e confirmada pelo utilizador (fecho documental).
+- Utilizador avisado da entrada na nova sub-fase (regra de comunicacao do
+  roadmap em res://.summerrules) e respondeu ao questionario de direcao da
+  Alpha 1.4.
+
+Criterios de saida (para definir o primeiro slice jogavel; a sub-fase fecha
+quando estes criterios estiverem cumpridos):
+- Decisao de design registada no ROADMAP.md, no DEVELOPMENT_LOG.md e em
+  res://.summerrules (esta atualizacao).
+- Loop composto documentado (exploracao, investigacao, missoes/objetivos,
+  sobrevivencia) como visao, sem gameplay implementado.
+- Progressao composta documentada (descobertas/locais, objetivos, reputacao/
+  relacoes, mundo aberto) como visao.
+- Papel profissional do personagem mantido em aberto, sem escolha de profissao.
+- Primeiro slice jogavel definido e documentado (o que o jogador faz, objetivo
+  basico e condicao de fim de ciclo) e aprovado pelo utilizador, sem inventar
+  missao concreta, profissao ou sistemas.
+- Confirmacao do utilizador do estado documental; commit de marco documental
+  executado pelo coordenador/utilizador.
+
+Proxima acao (apos esta atualizacao):
+- Coordenador/utilizador executa o commit/push documental desta decisao (Git nao
+  executado nesta tarefa).
+- Definir e documentar o primeiro slice jogavel dentro da Alpha 1.4, sem
+  implementar gameplay ainda; manter o papel do personagem em aberto ate decisao
+  explicita do utilizador.
+- Nao iniciar Alpha 1.5 nem qualquer nova sub-fase nesta tarefa.
 
 ## 7. Dependencias globais
 

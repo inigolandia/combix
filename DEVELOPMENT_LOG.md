@@ -18,8 +18,10 @@ sem erros em prova de funcionalidade global.
   PackedScene sob Main/StaticBuildings e reparacao do parse de main.tscn
   implementadas e verificadas; playtest manual pos-consolidacao confirmado como
   perfeito; ver ROADMAP.md).
-- Alpha 1.4: proxima sub-fase (definicao do loop principal), nao iniciada; o
-  loop principal ainda nao esta decidido.
+- Alpha 1.4: em andamento (definicao do loop principal); decisao de design
+  registada como visao: RPG narrativo de mundo aberto com loop composto de
+  exploracao urbana, investigacao, missoes/objetivos e sobrevivencia, papel do
+  personagem em aberto; ver entrada abaixo.
 
 ## Marco: Alpha 1.1 "Base tecnica estavel" (concluida)
 
@@ -341,6 +343,66 @@ Confirmado apos a consolidacao:
   nesta tarefa).
 - Nao criar loop de gameplay, missoes, NPCs, UI nem assets nesta tarefa.
 
+## Marco: Alpha 1.4 - Decisao de design do loop principal (em andamento)
+
+Entrada documental da decisao de direcao da Alpha 1.4, apos o questionario da
+sub-fase respondido pelo utilizador. Nenhum gameplay foi implementado nesta
+tarefa; apenas decisoes e documentacao.
+
+### Decidido (visao de design)
+
+- Direcao do jogo: RPG narrativo de mundo aberto, inspirado numa Washington
+  ficcional, combinando exploracao urbana, investigacao, missoes/objetivos e
+  sobrevivencia (atividades A, B, C e E do questionario).
+- Loop composto (visao): explorar o mundo urbano -> investigar locais e pistas ->
+  cumprir missoes/objetivos -> gerir a sobrevivencia; em liberdade de mundo
+  aberto, com novas descobertas a abrir novos objetivos.
+- Progressao composta (visao): descobertas e locais, objetivos concluidos,
+  reputacao e relacoes, e mundo aberto livre.
+- Papel profissional do personagem mantido deliberadamente EM ABERTO: o
+  questionario recolheu residente/cidadao, investigador, estafeta/entregador e
+  agente de autoridade, mas o utilizador, quando clarificado, escolheu manter a
+  estrutura de papeis em aberto; nenhuma profissao e escolhida nesta fase.
+- Escala e mundo herdados permanecem: Washington ficcional, 1 unidade Godot =
+  45,0 metros reais (res://.summerrules).
+
+### Nao decidido (em aberto)
+
+- Papel profissional concreto do personagem (em aberto de proposito).
+- Primeiro objetivo/missao concreta do primeiro slice jogavel (a definir dentro
+  da sub-fase; nao inventado aqui).
+- Regras detalhadas de sobrevivencia (fome, saude, abrigo, clima, etc.).
+- Faccoes, sistemas de combate, narrativa concreta e conteudo detalhado.
+
+### Nao implementado
+
+- Nenhum sistema de gameplay, missao, NPC, veiculo, UI, audio, asset, cena ou
+  configuracao de gameplay foi criado ou alterado por esta decisao. Apenas
+  res://.summerrules, res://ROADMAP.md e res://DEVELOPMENT_LOG.md foram
+  atualizados.
+
+### Confirmado pelo utilizador
+
+- Direcao de Alpha 1.4 escolhida no questionario (atividade principal, papel em
+  aberto e progressao), registada como visao de design; nao e implementacao.
+
+### Nao verificado / desconhecido
+
+- Nenhuma validacao em Play e aplicavel: esta tarefa nao implementa gameplay.
+- O comportamento do jogo continua o estado de Alpha 1.3 ate decisao e
+  implementacao posteriores.
+
+### Proxima acao
+
+- Coordenador/utilizador executa o commit/push documental desta decisao (Git nao
+  executado nesta tarefa).
+- Definir e documentar o primeiro slice jogavel dentro da Alpha 1.4 (o que o
+  jogador faz, objetivo basico e condicao de fim de ciclo), aprovado pelo
+  utilizador, sem implementar gameplay e sem escolher profissao.
+- Manter o papel do personagem e as regras de sobrevivencia em aberto ate
+  decisoes explicitas do utilizador.
+- Nao iniciar Alpha 1.5 nem implementar gameplay nesta fase.
+
 ## Repositorio Git (estado conhecido)
 
 - Ramo: main. A consolidacao PackedScene e a reparacao do parse de res://main.tscn
@@ -369,6 +431,10 @@ Confirmado apos a consolidacao:
   - a98e604: "Consolidate Alpha 1.3 building library" (commit local da
     consolidacao PackedScene e da reparacao do parse; push automatico falhou,
     estado do remoto a verificar pelo coordenador/utilizador).
+- Esta atualizacao documental (decisao de design de Alpha 1.4 em
+  res://.summerrules, res://ROADMAP.md e res://DEVELOPMENT_LOG.md) fica
+  preparada para commit/push pelo coordenador/utilizador; nenhuma operacao Git
+  foi executada nesta tarefa.
 - Nota: as operacoes Git de marco sao executadas pelo coordenador/utilizador, nao
   automaticamente.
 
