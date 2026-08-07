@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://ncceyeiy14p4"]
+[gd_scene format=3 uid="uid://ncceyeiy14p4"]
 
 [ext_resource type="Script" uid="uid://j4x3nlp5v8j2" path="res://top_down_camera_controller.gd" id="1_camera"]
 [ext_resource type="Script" uid="uid://dgpspm7rlbxk7" path="res://player_controller.gd" id="2_player"]
@@ -766,20 +766,20 @@ metadata/gis_overlay_generated = true
 
 [node name="StaticBuildings" type="Node3D" parent="." unique_id=163862460]
 
-[node name="StaticBuilding01_Apartamento" parent="StaticBuildings" instance=ExtResource("13_apartamento")]
+[node name="StaticBuilding01_Apartamento" parent="StaticBuildings" unique_id=1329541433 instance=ExtResource("13_apartamento")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
 
-[node name="StaticBuilding02_Residencial" parent="StaticBuildings" instance=ExtResource("14_residencial")]
+[node name="StaticBuilding02_Residencial" parent="StaticBuildings" unique_id=1227156470 instance=ExtResource("14_residencial")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -12)
 
-[node name="StaticBuilding03_Townhouse" parent="StaticBuildings" instance=ExtResource("15_townhouse")]
+[node name="StaticBuilding03_Townhouse" parent="StaticBuildings" unique_id=352059539 instance=ExtResource("15_townhouse")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 
-[node name="StaticBuilding04_Comercio" parent="StaticBuildings" instance=ExtResource("10_commerce")]
+[node name="StaticBuilding04_Comercio" parent="StaticBuildings" unique_id=276220508 instance=ExtResource("10_commerce")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 12)
 
-[node name="StaticBuilding05_Comunitaria" parent="StaticBuildings" instance=ExtResource("11_community")]
+[node name="StaticBuilding05_Comunitaria" parent="StaticBuildings" unique_id=1624683861 instance=ExtResource("11_community")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
 
-[node name="StaticBuilding06_Industrial" parent="StaticBuildings" instance=ExtResource("12_industrial")]
+[node name="StaticBuilding06_Industrial" parent="StaticBuildings" unique_id=1356603693 instance=ExtResource("12_industrial")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 12)
