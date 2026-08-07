@@ -244,6 +244,17 @@ size = Vector3(0.36, 0.12, 0.48)
 [sub_resource type="BoxShape3D" id="Shape_static_building_02"]
 size = Vector3(0.36, 0.12, 0.48)
 
+[sub_resource type="StandardMaterial3D" id="Material_static_building_03"]
+albedo_color = Color(0.68, 0.44, 0.28, 1)
+metallic = 0.05
+roughness = 0.72
+
+[sub_resource type="BoxMesh" id="Mesh_static_building_03"]
+size = Vector3(0.29, 0.18, 0.71)
+
+[sub_resource type="BoxShape3D" id="Shape_static_building_03"]
+size = Vector3(0.29, 0.18, 0.71)
+
 [node name="Main" type="Node3D" unique_id=547454839]
 metadata/sector_label = "Setor 1 — Ward 8 / leste de Anacostia — limites aproximados"
 metadata/sector_identity = "Ward 8 / leste de Anacostia"
@@ -544,7 +555,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001785, 0)
 shape = SubResource("Shape_plate_15")
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1233543996 groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.021393, -10.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.021393, -2)
 collision_layer = 2
 script = ExtResource("2_player")
 
@@ -805,3 +816,15 @@ mesh = SubResource("Mesh_static_building_02")
 [node name="Collision" type="CollisionShape3D" parent="StaticBuildings/StaticBuilding02_Residencial" unique_id=610773831]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.064, 0)
 shape = SubResource("Shape_static_building_02")
+
+[node name="StaticBuilding03_Townhouse" type="StaticBody3D" parent="StaticBuildings" unique_id=720773832]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="StaticBuildings/StaticBuilding03_Townhouse" unique_id=820773833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.094, 0)
+material_override = SubResource("Material_static_building_03")
+mesh = SubResource("Mesh_static_building_03")
+
+[node name="Collision" type="CollisionShape3D" parent="StaticBuildings/StaticBuilding03_Townhouse" unique_id=930773834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.094, 0)
+shape = SubResource("Shape_static_building_03")
