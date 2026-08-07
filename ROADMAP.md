@@ -31,8 +31,9 @@ res://.summerrules).
 
 - Alpha 1.1 "Base tecnica estavel": CONCLUIDA.
 - Alpha 1.2 "Mapa estatico controlado": CONCLUIDA e confirmada pelo utilizador em Play.
-- Alpha 1.3 "Edificios estaticos e colisoes simplificadas": EM ANDAMENTO. Primeira
-  fatia aplicada e confirmada pelo utilizador (edificio estatico 01); ver secao 6.
+- Alpha 1.3 "Edificios estaticos e colisoes simplificadas": EM ANDAMENTO. Dois
+  edificios estaticos aplicados e confirmados pelo utilizador (edificio 01 -
+  hipermercado de res-do-chao - e edificio 02 - residencial pequeno); ver secao 6.
 
 ## 4. Alpha 1.1 - Base tecnica estavel (concluida)
 
@@ -101,16 +102,30 @@ Dependencias:
   e res://gis/sector1_building_footprints_batch.res.
 - Decisoes de desempenho (colisao simplificada vs sem colisao) a confirmar.
 
-Estado atual (primeira fatia aplicada e confirmada pelo utilizador):
-- Nova cena res://static_building_01_apartamento.tscn integrada na cena principal
-  sob Main/StaticBuildings/StaticBuilding01_Apartamento, com Mesh (MeshInstance3D)
-  e CollisionShape3D simples.
-- Primeiro slice (hipermercado de res-do-chao) confirmado pelo utilizador em Play:
-  altura 4.5 m reais = 0.10 unidades, jogador 1.7 m reais = 0.03778 unidades,
-  proporcao de aproximadamente 37.8% considerada correta, colisao confirmada
-  perfeita e jogador colocado perto do edificio para o teste.
+Estado atual (dois edificios estaticos aplicados e confirmados pelo utilizador):
+- Edificio 01 - hipermercado de res-do-chao:
+  - Nova cena res://static_building_01_apartamento.tscn integrada na cena principal
+    sob Main/StaticBuildings/StaticBuilding01_Apartamento, com MeshInstance3D e
+    CollisionShape3D simples.
+  - Confirmado pelo utilizador em Play: altura 4.5 m reais = 0.10 unidades, footprint
+    1.19 x 1.43 unidades, jogador 1.7 m reais = 0.03778 unidades, proporcao de
+    aproximadamente 37.8% considerada correta e colisao simples perfeita.
+- Edificio 02 - residencial pequeno:
+  - Nova cena res://static_building_02_residencial.tscn integrada na cena principal
+    sob Main/StaticBuildings/StaticBuilding02_Residencial, com MeshInstance3D e
+    CollisionShape3D simples.
+  - Confirmado pelo utilizador: footprint herdado do marcador Placa_01, altura
+    5.4 m reais = 0.12 unidades e colisao simples integrada.
+- Correcao de flicker das bases (aplicada e confirmada pelo utilizador como
+  perfeita): as bases dos dois edificios receberam um offset geometrico minimo de
+  0.004 unidades para eliminar o flicker, sem alterar a escala horizontal nem a
+  altura alvo de cada edificio.
+- Camara ajustada: spring_length passou de 0.35 para 0.20; o utilizador aprovou o
+  estado atual resultante.
+- Jogador posicionado perto do edificio para facilitar os testes; a configuracao
+  normal de arranque/GIS permaneceu leve.
 - BakedMap, volumes low-rise e footprints GIS continuam presentes como referencia;
-  a fatia atual nao substitui nem remove os overlays GIS.
+  as fatias atuais nao substituem nem removem os overlays GIS.
 - A tentativa de atualizacao automatica anterior foi bloqueada apenas porque os
   ficheiros de jogo estavam protegidos para o builder; este ROADMAP apenas regista o
   estado aplicado, sem alterar ficheiros de jogo.
@@ -119,19 +134,20 @@ Criterios de entrada:
 - 1.2 concluida; utilizador avisado e confirma o inicio de 1.3.
 
 Criterios de saida:
-- A definir/confirmar; ainda nao cumpridos. Nao marcar 1.3 como concluida: os
-  restantes edificios estaticos e as colisoes simplificadas ainda nao foram
-  convertidos.
+- A definir/confirmar; ainda nao cumpridos. Nao marcar 1.3 como concluida: a
+  biblioteca de tipos estaticos ainda nao esta completa e os restantes edificios
+  estaticos do Setor 1 continuam por converter.
 
 Proxima acao:
-- Avancar para o proximo edificio estatico representativo e converter os restantes
-  edificios; nao inventar ainda o loop principal (gameplay das fases seguintes nao
-  esta decidido).
+- Avancar para o proximo tipo estatico representativo, provavelmente moradia
+  geminada, e converter os restantes edificios; nao criar esse edificio nesta tarefa
+  e nao inventar ainda o loop principal (gameplay das fases seguintes nao esta
+  decidido).
 
 Nota sobre commit de marco:
-- Os ficheiros de jogo da fatia estao prontos para um commit de marco; este
-  documento e o DEVELOPMENT_LOG.md serao acompanhados por esse commit, executado
-  pelo coordenador/utilizador.
+- As alteracoes desta fase (documentos, .summerrules, main.tscn e as duas cenas de
+  edificios) estao prontas para um commit de marco; este documento e o
+  DEVELOPMENT_LOG.md acompanham esse commit, executado pelo coordenador/utilizador.
 
 Riscos:
 - Muitos shapes de colisao podem degradar o desempenho; a decisao atual e que os
@@ -147,8 +163,9 @@ Riscos:
   reais (res://world_scale.gd, res://.summerrules).
 - Mundo: Washington ficcional inspirada na real; dados oficiais quando disponiveis,
   estimativas claramente identificadas quando nao existirem.
-- Repositorio Git em main sincronizado com origin/main
-  (https://github.com/inigolandia/combix.git).
+- Repositorio Git em main; ultima sincronizacao com origin/main no commit dbd351a
+  antes das alteracoes da sub-fase 1.3, que seguem locais e prontas para o commit de
+  marco (https://github.com/inigolandia/combix.git).
 
 ## 8. Riscos conhecidos
 

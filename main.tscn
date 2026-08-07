@@ -233,6 +233,17 @@ size = Vector3(1.19, 0.1, 1.43)
 [sub_resource type="BoxShape3D" id="Shape_static_building_01"]
 size = Vector3(1.19, 0.1, 1.43)
 
+[sub_resource type="StandardMaterial3D" id="Material_static_building_02"]
+albedo_color = Color(0.72, 0.52, 0.42, 1)
+metallic = 0.05
+roughness = 0.72
+
+[sub_resource type="BoxMesh" id="Mesh_static_building_02"]
+size = Vector3(0.36, 0.12, 0.48)
+
+[sub_resource type="BoxShape3D" id="Shape_static_building_02"]
+size = Vector3(0.36, 0.12, 0.48)
+
 [node name="Main" type="Node3D" unique_id=547454839]
 metadata/sector_label = "Setor 1 — Ward 8 / leste de Anacostia — limites aproximados"
 metadata/sector_identity = "Ward 8 / leste de Anacostia"
@@ -533,7 +544,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001785, 0)
 shape = SubResource("Shape_plate_15")
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1233543996 groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6, 0.021393, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.021393, -10.2)
 collision_layer = 2
 script = ExtResource("2_player")
 
@@ -550,7 +561,7 @@ script = ExtResource("1_camera")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Player/CameraController" unique_id=1636255682]
 transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.258819, 0, -0.258819, 0.9659258, 0, 0, 0)
-spring_length = 0.35
+spring_length = 0.2
 
 [node name="Camera3D" type="Camera3D" parent="Player/CameraController/SpringArm3D" unique_id=2052334941]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 2.9802322e-08, 0, -2.9802322e-08, 1.0000001, 0, 0.08243893, -0.30766636)
@@ -775,10 +786,22 @@ metadata/gis_overlay_generated = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
 
 [node name="Mesh" type="MeshInstance3D" parent="StaticBuildings/StaticBuilding01_Apartamento" unique_id=45438116]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.054, 0)
 material_override = SubResource("Material_static_building_01")
 mesh = SubResource("Mesh_static_building_01")
 
 [node name="Collision" type="CollisionShape3D" parent="StaticBuildings/StaticBuilding01_Apartamento" unique_id=975970212]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.054, 0)
 shape = SubResource("Shape_static_building_01")
+
+[node name="StaticBuilding02_Residencial" type="StaticBody3D" parent="StaticBuildings" unique_id=310773829]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -12)
+
+[node name="Mesh" type="MeshInstance3D" parent="StaticBuildings/StaticBuilding02_Residencial" unique_id=510773830]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.064, 0)
+material_override = SubResource("Material_static_building_02")
+mesh = SubResource("Mesh_static_building_02")
+
+[node name="Collision" type="CollisionShape3D" parent="StaticBuildings/StaticBuilding02_Residencial" unique_id=610773831]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.064, 0)
+shape = SubResource("Shape_static_building_02")

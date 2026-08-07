@@ -11,8 +11,9 @@ sem erros em prova de funcionalidade global.
 
 - Alpha 1.1: concluida.
 - Alpha 1.2: concluida e confirmada pelo utilizador em Play.
-- Alpha 1.3: em andamento (primeira fatia de edificio estatico aplicada e
-  confirmada pelo utilizador; ver ROADMAP.md).
+- Alpha 1.3: em andamento (dois edificios estaticos aplicados e confirmados pelo
+  utilizador - edificio 01 hipermercado de res-do-chao e edificio 02 residencial
+  pequeno; ver ROADMAP.md).
 
 ## Marco: Alpha 1.1 "Base tecnica estavel" (concluida)
 
@@ -102,48 +103,78 @@ futuras, outros dispositivos).
 - Desempenho a longo prazo com a cena completa e futuras adicoes (1.3 e seguintes).
 - Sistemas de gameplay das fases seguintes (nao decididos; ver ROADMAP.md).
 
-## Marco: Alpha 1.3 "Edificios estaticos e colisoes simplificadas" (em andamento - primeira fatia confirmada)
+## Marco: Alpha 1.3 "Edificios estaticos e colisoes simplificadas" (em andamento - dois edificios confirmados)
 
 ### O que foi implementado (aplicado)
 
-- Primeira fatia de edificio estatico:
+- Edificio 01 - hipermercado de res-do-chao:
   - Nova cena res://static_building_01_apartamento.tscn.
   - Integrada na cena principal res://main.tscn sob
     Main/StaticBuildings/StaticBuilding01_Apartamento.
   - O nodo contem MeshInstance3D (Mesh) e CollisionShape3D (Collision) simples.
+- Edificio 02 - residencial pequeno:
+  - Nova cena res://static_building_02_residencial.tscn.
+  - Integrada na cena principal res://main.tscn sob
+    Main/StaticBuildings/StaticBuilding02_Residencial.
+  - O nodo contem MeshInstance3D (Mesh) e CollisionShape3D (Collision) simples.
+- Correcao de flicker das bases: as bases dos dois edificios receberam um offset
+  geometrico minimo de 0.004 unidades para eliminar o flicker, sem alterar a escala
+  horizontal nem a altura alvo de cada edificio.
+- Camara ajustada: spring_length passou de 0.35 para 0.20.
+- Jogador posicionado perto do edificio para facilitar os testes; a configuracao
+  normal de arranque/GIS permaneceu leve.
 - BakedMap, volumes low-rise e footprints GIS continuam presentes como referencia;
-  os overlays de GISOverlayRuntime nao foram alterados por esta fatia
+  os overlays de GISOverlayRuntime nao foram alterados por estas fatias
   (Sector1BoundaryCollision mantem a colisao da fronteira e
   Sector1BuildingCollision permanece vazio).
 
 ### Confirmado pelo utilizador
 
-- Primeiro slice (hipermercado de res-do-chao) confirmado em Play:
+- Edificio 01 (hipermercado de res-do-chao) confirmado em Play:
   - Altura do edificio: 4.5 m reais = 0.10 unidades Godot (regra 1 unidade =
     45.0 m reais).
+  - Footprint 1.19 x 1.43 unidades.
   - Jogador: 1.7 m reais = 0.03778 unidades Godot.
   - Proporcao de aproximadamente 37.8% (edificio/jogador) considerada correta.
-  - Colisao confirmada perfeita.
+  - Colisao simples confirmada perfeita.
   - Jogador colocado temporariamente perto do edificio para o teste.
+- Edificio 02 (residencial pequeno) confirmado em Play:
+  - Footprint herdado do marcador Placa_01.
+  - Altura do edificio: 5.4 m reais = 0.12 unidades Godot.
+  - Colisao simples integrada.
+- Correcao de flicker das bases confirmada pelo utilizador como perfeita.
+- Camara ajustada para spring_length 0.20; o utilizador aprovou o estado atual
+  resultante.
+
+Nota de honestidade: as confirmacoes acima cobrem os comportamentos listados naquela
+execucao (dois edificios, colisoes, flicker das bases e camara). Nao provam a
+funcionalidade global, o desempenho continuo nem a biblioteca completa de tipos
+estaticos.
 
 ### Nao verificado / desconhecido
 
-- Escala, proporcao e colisao foram confirmados para o primeiro edificio; a
-  conversao dos restantes edificios do Setor 1 continua planeada.
+- A biblioteca de tipos estaticos ainda nao esta completa; os restantes edificios do
+  Setor 1 continuam por converter e Alpha 1.3 permanece em andamento.
+- Escala, proporcao e colisao foram confirmados apenas para os dois edificios atuais.
 - Colisoes completas dos edificios continuam planeadas (decisao de desempenho em
   aberto).
 - Loop principal e gameplay das fases seguintes nao decididos; nao inventar ainda.
 
-### Ficheiros da primeira fatia
+### Ficheiros desta fase
 
 - res://static_building_01_apartamento.tscn (novo).
-- res://main.tscn (integracao do nodo StaticBuilding01_Apartamento).
+- res://static_building_02_residencial.tscn (novo).
+- res://main.tscn (integracao dos nodos StaticBuilding01_Apartamento e
+  StaticBuilding02_Residencial).
+- res://.summerrules (alteracoes registadas durante a fase).
+- res://ROADMAP.md e res://DEVELOPMENT_LOG.md (esta atualizacao documental).
 
 ### Commit de marco
 
-- Os ficheiros de jogo da fatia estao prontos para um commit de marco; este
-  documento e o ROADMAP.md serao acompanhados por esse commit, executado pelo
-  coordenador/utilizador.
+- As alteracoes desta fase (.summerrules, ROADMAP.md, DEVELOPMENT_LOG.md, main.tscn
+  e as duas cenas de edificios) estao prontas para um commit de marco; este documento
+  e o ROADMAP.md acompanham esse commit, executado pelo coordenador/utilizador. Nao
+  foi executada nenhuma operacao Git nesta tarefa.
 
 ### Nota sobre a tentativa de atualizacao automatica anterior
 
@@ -153,23 +184,27 @@ futuras, outros dispositivos).
 
 ### Proxima acao
 
-- Avancar para o proximo edificio estatico representativo e converter os restantes
-  edificios do Setor 1.
+- Avancar para o proximo tipo estatico representativo, provavelmente moradia
+  geminada, e converter os restantes edificios do Setor 1.
+- Nao criar a moradia geminada nesta tarefa nem iniciar Alpha 1.4.
 - Nao iniciar ainda o loop principal: gameplay das fases seguintes nao esta
   decidido.
 
 ## Repositorio Git (estado conhecido)
 
-- Ramo: main. Estava limpo e sincronizado com origin/main antes da sub-fase 1.3;
-  desde a primeira fatia existem alteracoes de jogo nao commitadas (nova cena e
-  integracao em main.tscn), prontas para um commit de marco. Nao foi executada
-  nenhuma operacao Git para esta entrada; o commit de marco sera criado pelo
-  coordenador/utilizador e acompanhara estes documentos.
+- Ramo: main. O remoto foi sincronizado com origin/main no commit dbd351a antes das
+  alteracoes atuais da sub-fase 1.3. O estado local contem agora alteracoes desta
+  fase nao commitadas (.summerrules, ROADMAP.md, DEVELOPMENT_LOG.md, main.tscn,
+  static_building_01_apartamento.tscn e static_building_02_residencial.tscn), prontas
+  para um commit de marco a executar pelo coordenador/utilizador. Nao foi executada
+  nenhuma operacao Git nesta tarefa.
 - Remoto: https://github.com/inigolandia/combix.git
 - Commits existentes:
   - e9c1b98: backup inicial do projeto.
   - 73fa72a: preferencias persistentes do roadmap e avisos de backup Git.
-- Nota: este documento e o ROADMAP.md sao novos e ainda nao commitados; as
+  - dbd351a: ultimo commit remoto conhecido, sincronizado com origin/main antes das
+    alteracoes atuais da sub-fase 1.3.
+- Nota: este documento e o ROADMAP.md fazem parte do proximo commit de marco; as
   operacoes Git de marco sao executadas pelo coordenador/utilizador, nao
   automaticamente.
 
