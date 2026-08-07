@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ncceyeiy14p4"]
+[gd_scene load_steps=72 format=3 uid="uid://ncceyeiy14p4"]
 
 [ext_resource type="Script" uid="uid://j4x3nlp5v8j2" path="res://top_down_camera_controller.gd" id="1_camera"]
 [ext_resource type="Script" uid="uid://dgpspm7rlbxk7" path="res://player_controller.gd" id="2_player"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" path="res://static_building_04_comercio.tscn" id="10_commerce"]
 [ext_resource type="PackedScene" path="res://static_building_05_comunitaria.tscn" id="11_community"]
 [ext_resource type="PackedScene" uid="uid://dfh2qi4egsfvg" path="res://static_building_06_industrial.tscn" id="12_industrial"]
+[ext_resource type="PackedScene" path="res://static_building_01_apartamento.tscn" id="13_apartamento"]
+[ext_resource type="PackedScene" path="res://static_building_02_residencial.tscn" id="14_residencial"]
+[ext_resource type="PackedScene" path="res://static_building_03_townhouse.tscn" id="15_townhouse"]
 
 [sub_resource type="StandardMaterial3D" id="Material_ground"]
 albedo_color = Color(0.14117648, 0.15686275, 0.16862746, 1)
@@ -224,39 +227,6 @@ transparency = 1
 cull_mode = 2
 shading_mode = 0
 albedo_color = Color(0.6039216, 0.6627451, 0.654902, 0.72)
-
-[sub_resource type="StandardMaterial3D" id="Material_static_building_01"]
-albedo_color = Color(0.76, 0.47, 0.31, 1)
-metallic = 0.05
-roughness = 0.72
-
-[sub_resource type="BoxMesh" id="Mesh_static_building_01"]
-size = Vector3(1.19, 0.1, 1.43)
-
-[sub_resource type="BoxShape3D" id="Shape_static_building_01"]
-size = Vector3(1.19, 0.1, 1.43)
-
-[sub_resource type="StandardMaterial3D" id="Material_static_building_02"]
-albedo_color = Color(0.72, 0.52, 0.42, 1)
-metallic = 0.05
-roughness = 0.72
-
-[sub_resource type="BoxMesh" id="Mesh_static_building_02"]
-size = Vector3(0.36, 0.12, 0.48)
-
-[sub_resource type="BoxShape3D" id="Shape_static_building_02"]
-size = Vector3(0.36, 0.12, 0.48)
-
-[sub_resource type="StandardMaterial3D" id="Material_static_building_03"]
-albedo_color = Color(0.68, 0.44, 0.28, 1)
-metallic = 0.05
-roughness = 0.72
-
-[sub_resource type="BoxMesh" id="Mesh_static_building_03"]
-size = Vector3(0.29, 0.18, 0.71)
-
-[sub_resource type="BoxShape3D" id="Shape_static_building_03"]
-size = Vector3(0.29, 0.18, 0.71)
 
 [node name="Main" type="Node3D" unique_id=547454839]
 metadata/sector_label = "Setor 1 — Ward 8 / leste de Anacostia — limites aproximados"
@@ -796,47 +766,20 @@ metadata/gis_overlay_generated = true
 
 [node name="StaticBuildings" type="Node3D" parent="." unique_id=163862460]
 
-[node name="StaticBuilding01_Apartamento" type="StaticBody3D" parent="StaticBuildings" unique_id=186609404]
+[node name="StaticBuilding01_Apartamento" parent="StaticBuildings" instance=ExtResource("13_apartamento")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
 
-[node name="Mesh" type="MeshInstance3D" parent="StaticBuildings/StaticBuilding01_Apartamento" unique_id=45438116]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.054, 0)
-material_override = SubResource("Material_static_building_01")
-mesh = SubResource("Mesh_static_building_01")
-
-[node name="Collision" type="CollisionShape3D" parent="StaticBuildings/StaticBuilding01_Apartamento" unique_id=975970212]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.054, 0)
-shape = SubResource("Shape_static_building_01")
-
-[node name="StaticBuilding02_Residencial" type="StaticBody3D" parent="StaticBuildings" unique_id=310773829]
+[node name="StaticBuilding02_Residencial" parent="StaticBuildings" instance=ExtResource("14_residencial")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -12)
 
-[node name="Mesh" type="MeshInstance3D" parent="StaticBuildings/StaticBuilding02_Residencial" unique_id=510773830]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.064, 0)
-material_override = SubResource("Material_static_building_02")
-mesh = SubResource("Mesh_static_building_02")
-
-[node name="Collision" type="CollisionShape3D" parent="StaticBuildings/StaticBuilding02_Residencial" unique_id=610773831]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.064, 0)
-shape = SubResource("Shape_static_building_02")
-
-[node name="StaticBuilding03_Townhouse" type="StaticBody3D" parent="StaticBuildings" unique_id=720773832]
+[node name="StaticBuilding03_Townhouse" parent="StaticBuildings" instance=ExtResource("15_townhouse")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 
-[node name="Mesh" type="MeshInstance3D" parent="StaticBuildings/StaticBuilding03_Townhouse" unique_id=820773833]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.094, 0)
-material_override = SubResource("Material_static_building_03")
-mesh = SubResource("Mesh_static_building_03")
-
-[node name="Collision" type="CollisionShape3D" parent="StaticBuildings/StaticBuilding03_Townhouse" unique_id=930773834]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.094, 0)
-shape = SubResource("Shape_static_building_03")
-
-[node name="StaticBuilding04_Comercio" parent="StaticBuildings" unique_id=1752244556 instance=ExtResource("10_commerce")]
+[node name="StaticBuilding04_Comercio" parent="StaticBuildings" instance=ExtResource("10_commerce")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 12)
 
-[node name="StaticBuilding05_Comunitaria" parent="StaticBuildings" unique_id=2000006987 instance=ExtResource("11_community")]
+[node name="StaticBuilding05_Comunitaria" parent="StaticBuildings" instance=ExtResource("11_community")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
 
-[node name="StaticBuilding06_Industrial" parent="StaticBuildings" unique_id=78847863 instance=ExtResource("12_industrial")]
+[node name="StaticBuilding06_Industrial" parent="StaticBuildings" instance=ExtResource("12_industrial")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 12)

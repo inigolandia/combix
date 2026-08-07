@@ -14,7 +14,10 @@ sem erros em prova de funcionalidade global.
 - Alpha 1.3: em andamento (seis edificios estaticos aplicados e confirmados pelo
   utilizador - edificio 01 hipermercado de res-do-chao, edificio 02 residencial
   pequeno, edificio 03 moradia geminada, edificio 04 comercio local, edificio 05
-  edificio comunitario e edificio 06 armazem industrial; ver ROADMAP.md).
+  edificio comunitario e edificio 06 armazem industrial; consolidacao tecnica
+  como PackedScene e reparacao do parse implementadas e verificadas
+  tecnicamente; playtest manual pos-consolidacao e decisao sobre blockouts GIS
+  pendentes; ver ROADMAP.md).
 
 ## Marco: Alpha 1.1 "Base tecnica estavel" (concluida)
 
@@ -104,7 +107,7 @@ futuras, outros dispositivos).
 - Desempenho a longo prazo com a cena completa e futuras adicoes (1.3 e seguintes).
 - Sistemas de gameplay das fases seguintes (nao decididos; ver ROADMAP.md).
 
-## Marco: Alpha 1.3 "Edificios estaticos e colisoes simplificadas" (em andamento - seis edificios confirmados)
+## Marco: Alpha 1.3 "Edificios estaticos e colisoes simplificadas" (em andamento - seis edificios confirmados; consolidacao PackedScene e reparacao do parse verificadas tecnicamente; playtest manual pendente)
 
 ### O que foi implementado (aplicado)
 
@@ -224,12 +227,48 @@ execucao (seis edificios, colisoes, flicker das bases e camara). Nao provam a
 funcionalidade global, o desempenho continuo nem a biblioteca completa de tipos
 estaticos.
 
+### Auditoria/consolidacao tecnica (PackedScene) e reparacao do parse
+
+Implementado (consolidacao):
+- As seis cenas proprias foram consolidadas como PackedScene sob
+  Main/StaticBuildings (StaticBuilding01_Apartamento a
+  StaticBuilding06_Industrial).
+- Os edificios 01-03, antes com subresources inline, foram convertidos para
+  PackedScene, alinhando-os com 04-06.
+- O edificio 06 recebeu header com load_steps=4 e
+  collision_layer=1/collision_mask=1, consistentes com os restantes edificios.
+- As posicoes dos seis edificios foram preservadas na consolidacao (nenhum
+  edificio foi reposicionado).
+
+Implementado (reparacao do parse):
+- A primeira gravacao da consolidacao deixou res://main.tscn invalido em disco
+  com "Parse Error: Invalid parameter" na linha 774.
+- A falha foi reparada adicionando load_steps=72 ao header de res://main.tscn e
+  removendo unique_id das seis linhas de nodes com instance=ExtResource(...).
+
+Verificado tecnicamente (nao substitui playtest manual):
+- OpenScene recarregou a cena a partir do disco (nao do buffer do editor).
+- A arvore confirmou as seis instancias com MeshInstance3D e CollisionShape3D.
+- Os diagnostics especificos ficaram limpos e uma verificacao tecnica arrancou
+  sem erros observados.
+
+Nao verificado:
+- Playtest manual pos-consolidacao pelo utilizador ainda nao foi feito; as
+  confirmacoes em Play registadas acima referem-se ao estado anterior a
+  consolidacao. O comportamento visual e de colisao apos a consolidacao
+  PackedScene e a reparacao do parse precisa de ser confirmado pelo utilizador
+  antes do fecho de Alpha 1.3.
+
 ### Nao verificado / desconhecido
 
-- A biblioteca de tipos estaticos esta parcialmente consolidada: seis tipos
-  estaticos confirmados, mas a consolidacao da biblioteca/colocacoes e a decisao
-  sobre o papel dos blockouts GIS continuam pendentes antes de iniciar Alpha 1.4;
-  Alpha 1.3 permanece em andamento.
+- Playtest manual pos-consolidacao pelo utilizador ainda nao foi feito; as
+  confirmacoes em Play dos seis edificios referem-se ao estado anterior a
+  consolidacao PackedScene. O fecho de Alpha 1.3 depende desse playtest e da
+  decisao documentada sobre o papel dos blockouts GIS; Alpha 1.3 permanece em
+  andamento.
+- A consolidacao tecnica foi verificada por recarregamento da cena do disco,
+  diagnostics limpos e arranque tecnico sem erros observados; essa verificacao
+  nao prova o comportamento visual/colisao em Play.
 - Os restantes edificios estaticos do Setor 1 continuam por converter (planeado,
   nao iniciado nesta tarefa).
 - Escala, proporcao e colisao foram confirmados apenas para os seis edificios
@@ -240,30 +279,28 @@ estaticos.
 
 ### Ficheiros desta fase
 
-- res://static_building_01_apartamento.tscn (novo).
-- res://static_building_02_residencial.tscn (novo).
-- res://static_building_03_townhouse.tscn (novo).
-- res://static_building_04_comercio.tscn (novo).
-- res://static_building_05_comunitaria.tscn (novo).
-- res://static_building_06_industrial.tscn (novo).
-- res://main.tscn (integracao dos nodos StaticBuilding01_Apartamento,
-  StaticBuilding02_Residencial, StaticBuilding03_Townhouse,
-  StaticBuilding04_Comercio, StaticBuilding05_Comunitaria e
+- res://static_building_01_apartamento.tscn (novo; consolidado como PackedScene).
+- res://static_building_02_residencial.tscn (novo; consolidado como PackedScene).
+- res://static_building_03_townhouse.tscn (novo; consolidado como PackedScene).
+- res://static_building_04_comercio.tscn (novo; ja PackedScene, mantido).
+- res://static_building_05_comunitaria.tscn (novo; ja PackedScene, mantido).
+- res://static_building_06_industrial.tscn (novo; na consolidacao recebeu header
+  com load_steps=4 e collision_layer=1/collision_mask=1).
+- res://main.tscn (integracao dos seis nodos StaticBuilding01_Apartamento a
   StaticBuilding06_Industrial; correcao da posicao do jogador para
-  (8, 0.021393, 12.5)).
+  (8, 0.021393, 12.5); consolidacao das seis cenas como PackedScene; reparacao
+  do parse com load_steps=72 no header e remocao de unique_id das instancias
+  PackedScene).
 - res://.summerrules (alteracoes registadas durante a fase).
 - res://ROADMAP.md e res://DEVELOPMENT_LOG.md (esta atualizacao documental).
 
 ### Commit de marco
 
-- O remoto foi sincronizado com origin/main no commit 6352334 (ultimo commit
-  remoto conhecido antes das alteracoes do sexto edificio). As alteracoes atuais
-  (a cena static_building_06_industrial.tscn, a integracao de
-  StaticBuilding06_Industrial em main.tscn, a correcao da posicao do jogador
-  para (8, 0.021393, 12.5), a correcao anti-flicker da base do armazem e esta
-  atualizacao documental) estao prontas para o proximo commit; este documento e
-  o ROADMAP.md acompanham esse commit, executado pelo coordenador/utilizador.
-  Nao foi executada nenhuma operacao Git nesta tarefa.
+- O remoto esta sincronizado com origin/main no commit b0ef068. O Git esta dirty
+  apenas em res://main.tscn e res://static_building_06_industrial.tscn (as
+  alteracoes da consolidacao PackedScene e da reparacao do parse); este documento
+  e o ROADMAP.md passam a acompanhar esse proximo commit, executado pelo
+  coordenador/utilizador. Nao foi executada nenhuma operacao Git nesta tarefa.
 
 ### Nota sobre a tentativa de atualizacao automatica anterior
 
@@ -273,8 +310,11 @@ estaticos.
 
 ### Proxima acao
 
-- Consolidar a biblioteca/colocacoes dos seis tipos estaticos confirmados e
-  decidir o papel dos blockouts GIS antes de iniciar Alpha 1.4.
+- Playtest manual pos-consolidacao pelo utilizador (confirmar visual e colisao
+  dos seis edificios apos a consolidacao PackedScene e a reparacao do parse) e,
+  se aprovado, fecho de Alpha 1.3.
+- Decisao documentada sobre o papel dos blockouts GIS (manter como referencia,
+  substituir por edificios proprios ou outra politica) antes de iniciar Alpha 1.4.
 - Converter os restantes edificios estaticos do Setor 1 (planeado, nao iniciado
   nesta tarefa).
 - Nao iniciar Alpha 1.4 nesta tarefa nem criar outro edificio.
@@ -283,13 +323,12 @@ estaticos.
 
 ## Repositorio Git (estado conhecido)
 
-- Ramo: main. O remoto foi sincronizado com origin/main no commit 6352334. O
-  estado local contem agora alteracoes nao commitadas (a cena
-  static_building_06_industrial.tscn, a integracao de StaticBuilding06_Industrial
-  em main.tscn, a correcao da posicao do jogador para (8, 0.021393, 12.5), a
-  correcao anti-flicker da base do armazem e esta atualizacao documental),
-  prontas para o proximo commit de marco a executar pelo coordenador/utilizador.
-  Nao foi executada nenhuma operacao Git nesta tarefa.
+- Ramo: main. O remoto esta sincronizado com origin/main no commit b0ef068. O
+  estado local contem alteracoes nao commitadas: res://main.tscn e
+  res://static_building_06_industrial.tscn (a consolidacao PackedScene e a
+  reparacao do parse), prontas para o proximo commit de marco a executar pelo
+  coordenador/utilizador, acompanhadas por esta atualizacao documental. Nao foi
+  executada nenhuma operacao Git nesta tarefa.
 - Remoto: https://github.com/inigolandia/combix.git
 - Commits existentes:
   - e9c1b98: backup inicial do projeto.
@@ -301,8 +340,10 @@ estaticos.
     (comercio local).
   - cde5a0c: commit remoto registado antes das alteracoes do quinto edificio
     (edificio comunitario).
-  - 6352334: ultimo commit remoto conhecido (sincronizado com origin/main), antes
-    das alteracoes do sexto edificio (armazem industrial).
+  - 6352334: ultimo commit remoto conhecido antes das alteracoes do sexto
+    edificio (armazem industrial).
+  - b0ef068: commit remoto atual (sincronizado com origin/main), registado antes
+    da consolidacao tecnica dos seis edificios em PackedScene.
 - Nota: este documento e o ROADMAP.md fazem parte do proximo commit de marco; as
   operacoes Git de marco sao executadas pelo coordenador/utilizador, nao
   automaticamente.
