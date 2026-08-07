@@ -9,6 +9,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bb47j5o08vm1h" path="res://gis/sector1_waterbody_margins_batch.res" id="7_dg77c"]
 [ext_resource type="ArrayMesh" uid="uid://bkukhkhkq8uqy" path="res://gis/sector1_building_footprints_batch.res" id="8_ycdy4"]
 [ext_resource type="MultiMesh" uid="uid://ddlsvbscfoa68" path="res://gis/sector1_lowrise_masses_multimesh.res" id="9_w48qg"]
+[ext_resource type="PackedScene" path="res://static_building_04_comercio.tscn" id="10_commerce"]
 
 [sub_resource type="StandardMaterial3D" id="Material_ground"]
 albedo_color = Color(0.14117648, 0.15686275, 0.16862746, 1)
@@ -555,7 +556,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001785, 0)
 shape = SubResource("Shape_plate_15")
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1233543996 groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.021393, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.021393, 10)
 collision_layer = 2
 script = ExtResource("2_player")
 
@@ -828,3 +829,6 @@ mesh = SubResource("Mesh_static_building_03")
 [node name="Collision" type="CollisionShape3D" parent="StaticBuildings/StaticBuilding03_Townhouse" unique_id=930773834]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.094, 0)
 shape = SubResource("Shape_static_building_03")
+
+[node name="StaticBuilding04_Comercio" parent="StaticBuildings" unique_id=1752244556 instance=ExtResource("10_commerce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 12)

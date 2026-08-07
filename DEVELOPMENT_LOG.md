@@ -11,9 +11,10 @@ sem erros em prova de funcionalidade global.
 
 - Alpha 1.1: concluida.
 - Alpha 1.2: concluida e confirmada pelo utilizador em Play.
-- Alpha 1.3: em andamento (tres edificios estaticos aplicados e confirmados pelo
+- Alpha 1.3: em andamento (quatro edificios estaticos aplicados e confirmados pelo
   utilizador - edificio 01 hipermercado de res-do-chao, edificio 02 residencial
-  pequeno e edificio 03 moradia geminada; ver ROADMAP.md).
+  pequeno, edificio 03 moradia geminada e edificio 04 comercio local; ver
+  ROADMAP.md).
 
 ## Marco: Alpha 1.1 "Base tecnica estavel" (concluida)
 
@@ -103,7 +104,7 @@ futuras, outros dispositivos).
 - Desempenho a longo prazo com a cena completa e futuras adicoes (1.3 e seguintes).
 - Sistemas de gameplay das fases seguintes (nao decididos; ver ROADMAP.md).
 
-## Marco: Alpha 1.3 "Edificios estaticos e colisoes simplificadas" (em andamento - tres edificios confirmados)
+## Marco: Alpha 1.3 "Edificios estaticos e colisoes simplificadas" (em andamento - quatro edificios confirmados)
 
 ### O que foi implementado (aplicado)
 
@@ -124,6 +125,14 @@ futuras, outros dispositivos).
   - Derivada do marcador Placa_06_Townhouse_Habitacao_Geminada_01.
   - O nodo contem MeshInstance3D (Mesh) e CollisionShape3D (Collision) simples
     alinhados (mesh e shape com size Vector3(0.29, 0.18, 0.71)).
+- Edificio 04 - comercio local:
+  - Nova cena res://static_building_04_comercio.tscn.
+  - Integrada na cena principal res://main.tscn sob
+    Main/StaticBuildings/StaticBuilding04_Comercio.
+  - Derivada do marcador Placa_11_Comercio_Local_01.
+  - O nodo contem MeshInstance3D (Mesh) e CollisionShape3D (Collision) simples
+    alinhados (mesh e shape com size Vector3(0.59, 0.14, 0.71)).
+  - Jogador posicionado perto do edificio em (-10, 0.021393, 10) para o teste.
 - Correcao de flicker das bases: as bases dos dois edificios receberam um offset
   geometrico minimo de 0.004 unidades para eliminar o flicker, sem alterar a escala
   horizontal nem a altura alvo de cada edificio.
@@ -157,12 +166,21 @@ futuras, outros dispositivos).
   - Escala, local, colisao e funcionamento considerados perfeitos pelo utilizador.
   - Jogador colocado temporariamente perto do edificio em (-10, 0.021393, -2)
     para o teste.
+- Edificio 04 (comercio local) confirmado em Play:
+  - Footprint 0.59 x 0.71 unidades Godot (25 x 30 m reais).
+  - Altura do edificio: 0.14 unidades Godot = 6.3 m reais.
+  - MeshInstance3D e CollisionShape3D simples alinhados.
+  - Colisao e resultado visual confirmados.
+  - Escala, local, colisao, posicao e arranque considerados corretos pelo
+    utilizador.
+  - Jogador colocado temporariamente perto do edificio em (-10, 0.021393, 10)
+    para o teste.
 - Correcao de flicker das bases confirmada pelo utilizador como perfeita.
 - Camara ajustada para spring_length 0.20; o utilizador aprovou o estado atual
   resultante.
 
 Nota de honestidade: as confirmacoes acima cobrem os comportamentos listados naquela
-execucao (tres edificios, colisoes, flicker das bases e camara). Nao provam a
+execucao (quatro edificios, colisoes, flicker das bases e camara). Nao provam a
 funcionalidade global, o desempenho continuo nem a biblioteca completa de tipos
 estaticos.
 
@@ -170,7 +188,7 @@ estaticos.
 
 - A biblioteca de tipos estaticos ainda nao esta completa; os restantes edificios do
   Setor 1 continuam por converter e Alpha 1.3 permanece em andamento.
-- Escala, proporcao e colisao foram confirmados apenas para os tres edificios atuais.
+- Escala, proporcao e colisao foram confirmados apenas para os quatro edificios atuais.
 - Colisoes completas dos edificios continuam planeadas (decisao de desempenho em
   aberto).
 - Loop principal e gameplay das fases seguintes nao decididos; nao inventar ainda.
@@ -180,20 +198,22 @@ estaticos.
 - res://static_building_01_apartamento.tscn (novo).
 - res://static_building_02_residencial.tscn (novo).
 - res://static_building_03_townhouse.tscn (novo).
+- res://static_building_04_comercio.tscn (novo).
 - res://main.tscn (integracao dos nodos StaticBuilding01_Apartamento,
-  StaticBuilding02_Residencial e StaticBuilding03_Townhouse).
+  StaticBuilding02_Residencial, StaticBuilding03_Townhouse e
+  StaticBuilding04_Comercio).
 - res://.summerrules (alteracoes registadas durante a fase).
 - res://ROADMAP.md e res://DEVELOPMENT_LOG.md (esta atualizacao documental).
 
 ### Commit de marco
 
-- O commit de marco anterior (3ac6f85) registou as alteracoes dos dois primeiros
-  edificios (.summerrules, ROADMAP.md, DEVELOPMENT_LOG.md, main.tscn e as duas
-  cenas de edificios). As alteracoes atuais (main.tscn com
-  StaticBuilding03_Townhouse, a nova cena static_building_03_townhouse.tscn e esta
-  atualizacao documental) estao prontas para o proximo commit; este documento e o
-  ROADMAP.md acompanham esse commit, executado pelo coordenador/utilizador. Nao
-  foi executada nenhuma operacao Git nesta tarefa.
+- O remoto foi sincronizado com origin/main no commit 3de6798 (ultimo commit
+  remoto conhecido antes das alteracoes do quarto edificio). As alteracoes atuais
+  (main.tscn com StaticBuilding04_Comercio, a nova cena
+  static_building_04_comercio.tscn e esta atualizacao documental) estao prontas
+  para o proximo commit; este documento e o ROADMAP.md acompanham esse commit,
+  executado pelo coordenador/utilizador. Nao foi executada nenhuma operacao Git
+  nesta tarefa.
 
 ### Nota sobre a tentativa de atualizacao automatica anterior
 
@@ -203,18 +223,17 @@ estaticos.
 
 ### Proxima acao
 
-- Criar um tipo de comercio local ou outro tipo representativo ja previsto, e
-  converter os restantes edificios do Setor 1.
+- Criar um edificio comunitario ou industrial representativo e converter os
+  restantes edificios do Setor 1.
 - Nao criar esse edificio nesta tarefa nem iniciar Alpha 1.4.
 - Nao iniciar ainda o loop principal: gameplay das fases seguintes nao esta
   decidido.
 
 ## Repositorio Git (estado conhecido)
 
-- Ramo: main. O remoto foi sincronizado com origin/main no commit 3ac6f85 (que
-  registou as alteracoes dos dois primeiros edificios da sub-fase 1.3). O estado
-  local contem agora alteracoes nao commitadas (main.tscn com
-  StaticBuilding03_Townhouse e a nova cena static_building_03_townhouse.tscn, mais
+- Ramo: main. O remoto foi sincronizado com origin/main no commit 3de6798. O
+  estado local contem agora alteracoes nao commitadas (main.tscn com
+  StaticBuilding04_Comercio e a nova cena static_building_04_comercio.tscn, mais
   esta atualizacao documental), prontas para o proximo commit de marco a executar
   pelo coordenador/utilizador. Nao foi executada nenhuma operacao Git nesta tarefa.
 - Remoto: https://github.com/inigolandia/combix.git
@@ -223,7 +242,9 @@ estaticos.
   - 73fa72a: preferencias persistentes do roadmap e avisos de backup Git.
   - dbd351a: ultimo commit remoto conhecido antes das alteracoes da sub-fase 1.3.
   - 3ac6f85: commit de marco dos dois primeiros edificios estaticos da sub-fase
-    1.3, sincronizado com origin/main.
+    1.3.
+  - 3de6798: ultimo commit remoto conhecido (sincronizado com origin/main), antes
+    das alteracoes do quarto edificio (comercio local).
 - Nota: este documento e o ROADMAP.md fazem parte do proximo commit de marco; as
   operacoes Git de marco sao executadas pelo coordenador/utilizador, nao
   automaticamente.
