@@ -11,7 +11,8 @@ sem erros em prova de funcionalidade global.
 
 - Alpha 1.1: concluida.
 - Alpha 1.2: concluida e confirmada pelo utilizador em Play.
-- Alpha 1.3: planeada, nao iniciada (ver ROADMAP.md).
+- Alpha 1.3: em andamento (primeira fatia de edificio estatico aplicada e
+  confirmada pelo utilizador; ver ROADMAP.md).
 
 ## Marco: Alpha 1.1 "Base tecnica estavel" (concluida)
 
@@ -101,9 +102,69 @@ futuras, outros dispositivos).
 - Desempenho a longo prazo com a cena completa e futuras adicoes (1.3 e seguintes).
 - Sistemas de gameplay das fases seguintes (nao decididos; ver ROADMAP.md).
 
+## Marco: Alpha 1.3 "Edificios estaticos e colisoes simplificadas" (em andamento - primeira fatia confirmada)
+
+### O que foi implementado (aplicado)
+
+- Primeira fatia de edificio estatico:
+  - Nova cena res://static_building_01_apartamento.tscn.
+  - Integrada na cena principal res://main.tscn sob
+    Main/StaticBuildings/StaticBuilding01_Apartamento.
+  - O nodo contem MeshInstance3D (Mesh) e CollisionShape3D (Collision) simples.
+- BakedMap, volumes low-rise e footprints GIS continuam presentes como referencia;
+  os overlays de GISOverlayRuntime nao foram alterados por esta fatia
+  (Sector1BoundaryCollision mantem a colisao da fronteira e
+  Sector1BuildingCollision permanece vazio).
+
+### Confirmado pelo utilizador
+
+- Primeiro slice (hipermercado de res-do-chao) confirmado em Play:
+  - Altura do edificio: 4.5 m reais = 0.10 unidades Godot (regra 1 unidade =
+    45.0 m reais).
+  - Jogador: 1.7 m reais = 0.03778 unidades Godot.
+  - Proporcao de aproximadamente 37.8% (edificio/jogador) considerada correta.
+  - Colisao confirmada perfeita.
+  - Jogador colocado temporariamente perto do edificio para o teste.
+
+### Nao verificado / desconhecido
+
+- Escala, proporcao e colisao foram confirmados para o primeiro edificio; a
+  conversao dos restantes edificios do Setor 1 continua planeada.
+- Colisoes completas dos edificios continuam planeadas (decisao de desempenho em
+  aberto).
+- Loop principal e gameplay das fases seguintes nao decididos; nao inventar ainda.
+
+### Ficheiros da primeira fatia
+
+- res://static_building_01_apartamento.tscn (novo).
+- res://main.tscn (integracao do nodo StaticBuilding01_Apartamento).
+
+### Commit de marco
+
+- Os ficheiros de jogo da fatia estao prontos para um commit de marco; este
+  documento e o ROADMAP.md serao acompanhados por esse commit, executado pelo
+  coordenador/utilizador.
+
+### Nota sobre a tentativa de atualizacao automatica anterior
+
+- A tentativa de atualizacao automatica anterior foi bloqueada apenas porque estes
+  ficheiros de jogo estavam protegidos para o builder. Esta entrada documenta o
+  estado aplicado sem alterar ficheiros de jogo.
+
+### Proxima acao
+
+- Avancar para o proximo edificio estatico representativo e converter os restantes
+  edificios do Setor 1.
+- Nao iniciar ainda o loop principal: gameplay das fases seguintes nao esta
+  decidido.
+
 ## Repositorio Git (estado conhecido)
 
-- Ramo: main, limpo e sincronizado com origin/main.
+- Ramo: main. Estava limpo e sincronizado com origin/main antes da sub-fase 1.3;
+  desde a primeira fatia existem alteracoes de jogo nao commitadas (nova cena e
+  integracao em main.tscn), prontas para um commit de marco. Nao foi executada
+  nenhuma operacao Git para esta entrada; o commit de marco sera criado pelo
+  coordenador/utilizador e acompanhara estes documentos.
 - Remoto: https://github.com/inigolandia/combix.git
 - Commits existentes:
   - e9c1b98: backup inicial do projeto.

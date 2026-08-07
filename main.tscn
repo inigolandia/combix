@@ -222,6 +222,17 @@ cull_mode = 2
 shading_mode = 0
 albedo_color = Color(0.6039216, 0.6627451, 0.654902, 0.72)
 
+[sub_resource type="StandardMaterial3D" id="Material_static_building_01"]
+albedo_color = Color(0.76, 0.47, 0.31, 1)
+metallic = 0.05
+roughness = 0.72
+
+[sub_resource type="BoxMesh" id="Mesh_static_building_01"]
+size = Vector3(1.19, 0.1, 1.43)
+
+[sub_resource type="BoxShape3D" id="Shape_static_building_01"]
+size = Vector3(1.19, 0.1, 1.43)
+
 [node name="Main" type="Node3D" unique_id=547454839]
 metadata/sector_label = "Setor 1 — Ward 8 / leste de Anacostia — limites aproximados"
 metadata/sector_identity = "Ward 8 / leste de Anacostia"
@@ -522,7 +533,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001785, 0)
 shape = SubResource("Shape_plate_15")
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1233543996 groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.9469, 0.021393, -15.216174)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6, 0.021393, 0)
 collision_layer = 2
 script = ExtResource("2_player")
 
@@ -757,3 +768,17 @@ metadata/instance_budget = 180
 metadata/instances_drawn = 1800
 metadata/collision_count = 0
 metadata/gis_overlay_generated = true
+
+[node name="StaticBuildings" type="Node3D" parent="." unique_id=163862460]
+
+[node name="StaticBuilding01_Apartamento" type="StaticBody3D" parent="StaticBuildings" unique_id=186609404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="StaticBuildings/StaticBuilding01_Apartamento" unique_id=45438116]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+material_override = SubResource("Material_static_building_01")
+mesh = SubResource("Mesh_static_building_01")
+
+[node name="Collision" type="CollisionShape3D" parent="StaticBuildings/StaticBuilding01_Apartamento" unique_id=975970212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("Shape_static_building_01")

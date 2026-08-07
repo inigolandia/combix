@@ -10,7 +10,7 @@ O desenvolvimento esta organizado em quatro grandes fases:
 
 | Fase | Nome | Estado |
 |---|---|---|
-| 1 | Alpha | Em curso (1.1 e 1.2 concluidas; 1.3 planeada, nao iniciada) |
+| 1 | Alpha | Em curso (1.1 e 1.2 concluidas; 1.3 em andamento) |
 | 2 | Beta | Nao iniciada |
 | 3 | Final | Nao iniciada |
 | 4 | Lancamento | Nao iniciada |
@@ -31,8 +31,8 @@ res://.summerrules).
 
 - Alpha 1.1 "Base tecnica estavel": CONCLUIDA.
 - Alpha 1.2 "Mapa estatico controlado": CONCLUIDA e confirmada pelo utilizador em Play.
-- Alpha 1.3 "Edificios estaticos e colisoes simplificadas": PLANEADA, ainda nao
-  iniciada. Nao iniciar antes de aviso e confirmacao do utilizador.
+- Alpha 1.3 "Edificios estaticos e colisoes simplificadas": EM ANDAMENTO. Primeira
+  fatia aplicada e confirmada pelo utilizador (edificio estatico 01); ver secao 6.
 
 ## 4. Alpha 1.1 - Base tecnica estavel (concluida)
 
@@ -89,11 +89,11 @@ Estado: concluida e confirmada pelo utilizador em Play. Nota de honestidade: ess
 confirmacao cobre os comportamentos listados acima naquela execucao; nao prova a
 funcionalidade global (ver DEVELOPMENT_LOG).
 
-## 6. Alpha 1.3 - Edificios estaticos e colisoes simplificadas (planeada, nao iniciada)
+## 6. Alpha 1.3 - Edificios estaticos e colisoes simplificadas (em andamento)
 
 Escopo planeado (provisorio): edificios estaticos a partir dos footprints do Setor 1
 e colisoes simplificadas. Os detalhes e criterios de saida devem ser definidos e
-confirmados no inicio da sub-fase; nao iniciar 1.3 antes disso.
+confirmados no inicio da sub-fase.
 
 Dependencias:
 - Alpha 1.2 concluida e confirmada.
@@ -101,11 +101,37 @@ Dependencias:
   e res://gis/sector1_building_footprints_batch.res.
 - Decisoes de desempenho (colisao simplificada vs sem colisao) a confirmar.
 
+Estado atual (primeira fatia aplicada e confirmada pelo utilizador):
+- Nova cena res://static_building_01_apartamento.tscn integrada na cena principal
+  sob Main/StaticBuildings/StaticBuilding01_Apartamento, com Mesh (MeshInstance3D)
+  e CollisionShape3D simples.
+- Primeiro slice (hipermercado de res-do-chao) confirmado pelo utilizador em Play:
+  altura 4.5 m reais = 0.10 unidades, jogador 1.7 m reais = 0.03778 unidades,
+  proporcao de aproximadamente 37.8% considerada correta, colisao confirmada
+  perfeita e jogador colocado perto do edificio para o teste.
+- BakedMap, volumes low-rise e footprints GIS continuam presentes como referencia;
+  a fatia atual nao substitui nem remove os overlays GIS.
+- A tentativa de atualizacao automatica anterior foi bloqueada apenas porque os
+  ficheiros de jogo estavam protegidos para o builder; este ROADMAP apenas regista o
+  estado aplicado, sem alterar ficheiros de jogo.
+
 Criterios de entrada:
 - 1.2 concluida; utilizador avisado e confirma o inicio de 1.3.
 
 Criterios de saida:
-- A definir no inicio da sub-fase (nao inventar agora).
+- A definir/confirmar; ainda nao cumpridos. Nao marcar 1.3 como concluida: os
+  restantes edificios estaticos e as colisoes simplificadas ainda nao foram
+  convertidos.
+
+Proxima acao:
+- Avancar para o proximo edificio estatico representativo e converter os restantes
+  edificios; nao inventar ainda o loop principal (gameplay das fases seguintes nao
+  esta decidido).
+
+Nota sobre commit de marco:
+- Os ficheiros de jogo da fatia estao prontos para um commit de marco; este
+  documento e o DEVELOPMENT_LOG.md serao acompanhados por esse commit, executado
+  pelo coordenador/utilizador.
 
 Riscos:
 - Muitos shapes de colisao podem degradar o desempenho; a decisao atual e que os
