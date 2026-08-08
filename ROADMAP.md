@@ -16,8 +16,8 @@ O desenvolvimento esta organizado em quatro grandes fases:
 | 4 | Lancamento | Nao iniciada |
 
 Objetivos detalhados das fases 2, 3 e 4 ainda nao foram decididos. Este documento
-nao inventa gameplay nao decidido: missoes, NPCs, veiculos, UI, audio e outros
-sistemas so entram no roadmap quando existir uma decisao registada.
+nao inventa gameplay nao decidido: missoes, NPCs, veiculos, UI, audio, combate e
+outros sistemas so entram no roadmap quando existir uma decisao registada.
 
 ## 2. Numeracao das sub-fases
 
@@ -47,8 +47,15 @@ res://.summerrules).
   descoberta (ver secao 6.1). O primeiro slice foi implementado e VALIDADO pelo
   utilizador em Play (ao entrar na Area3D do hipermercado, o HUD apareceu com
   'Local Descoberto: Apartamento do Setor 1' e permaneceu visivel; ver
-  secao 6.1). A sub-fase Alpha 1.4 continua EM ANDAMENTO: falta definir o
-  proximo incremento narrativo/jogavel.
+  secao 6.1). A fundacao narrativa foi registada e clarificada (Corvax e o
+  nome final do protagonista; equipa composta por companheiros recrutaveis;
+  Iblis no Capitolio a guardar o Codificador Sagrado; escopo geografico total
+  ainda em aberto entre apenas o Setor 1 e toda Washington DC; Corvax encontra
+  a equipa, ganha experiencia e fica mais forte no Setor 1 antes de Iblis;
+  hierarquia demoniaca do Setor 1 apenas planeada; contagens em aberto; ver
+  secao 6.1); o primeiro slice permanece sem combate, demonios, companheiros ou
+  missao neste momento. A sub-fase Alpha 1.4 continua EM ANDAMENTO: falta
+  definir o proximo incremento narrativo/jogavel.
 
 ## 4. Alpha 1.1 - Base tecnica estavel (concluida)
 
@@ -298,6 +305,30 @@ sub-fase):
   de autoridade), mas o utilizador, quando clarificado, escolheu manter a
   estrutura de papeis em aberto; nenhuma profissao e escolhida nesta fase.
 
+Fundacao narrativa registada e clarificada (decisoes confirmadas do utilizador;
+nao implementada):
+- Decidido: Corvax e o nome final do protagonista, soldado de elite da E.R.A.
+  (Exercito da Resistencia Antidemonios); esta em Washington DC para reunir a
+  sua equipa de soldados de elite, composta por companheiros recrutaveis; o
+  objetivo final e derrotar Iblis no Capitolio (o local mais importante de
+  Washington DC) e recuperar o Codificador Sagrado, guardado por Iblis; o Setor
+  1 sera o inicio da jornada, onde Corvax tera de encontrar os elementos da sua
+  equipa, ganhar experiencia e ficar mais forte antes de chegar a Iblis; a
+  hierarquia demoniaca do Setor 1 fica apenas planeada por agora: um Demonio
+  Boss do setor que serve Iblis, Demonios Mini-Boss subordinados a esse Boss,
+  Demonios Elite subordinados a cada Mini-Boss e Demonios Soldado subordinados
+  a cada Elite.
+- Em aberto: o escopo geografico total do jogo ainda nao esta decidido (apenas
+  o Setor 1 ou toda Washington DC); numero de Mini-Bosses, Elites e Soldados
+  ainda nao decidido; nome da equipa de Corvax, numero e nomes dos companheiros
+  recrutaveis, sistema de recrutamento, localizacao concreta do Boss do Setor,
+  missoes, sistemas de combate e detalhes de experiencia/progressao nao
+  inventados.
+- Nao implementado: nenhum demonio (Boss, Mini-Boss, Elite ou Soldado), boss,
+  combate, equipa, companheiro, recrutamento, experiencia, progressao, missao
+  ou sistema de gameplay criado por estas decisoes; o primeiro slice continua
+  sem combate, demonios, companheiros ou missao neste momento.
+
 Decidido (primeiro slice jogavel, escolha do utilizador):
 - Primeiro slice jogavel da Alpha 1.4: exploracao urbana e descoberta de um
   unico local. O nucleo a provar e: o jogador explora uma zona do Setor 1,
@@ -331,15 +362,27 @@ Nao decidido (permanece em aberto nesta sub-fase):
 - Papel profissional concreto do personagem (nenhuma profissao escolhida).
 - Proximo incremento narrativo/jogavel da Alpha 1.4 (a definir com o utilizador
   na proxima tarefa; nao inventado nesta tarefa).
+- Escopo geografico total do jogo: ainda em aberto entre apenas o Setor 1 e
+  toda Washington DC; o Capitolio e a localizacao narrativa de Iblis, mas o
+  mapa total nao esta decidido.
+- Contagens da hierarquia demoniaca do Setor 1: numero de Mini-Bosses, Elites e
+  Soldados nao decidido (ver 'Fundacao narrativa registada e clarificada').
+- Nome da equipa de Corvax, numero e nomes dos companheiros recrutaveis,
+  sistema de recrutamento, localizacao concreta do Boss do Setor, missoes,
+  sistemas de combate e detalhes de experiencia/progressao (nao inventados).
 - Regras detalhadas de sobrevivencia (fome, saude, abrigo, clima, etc.).
-- Faccoes, sistemas de combate, narrativa concreta e conteudo detalhado.
+- Faccoes e conteudo detalhado.
 
 Nao implementado (fora desta tarefa de validacao documental):
 - Nenhum sistema de gameplay alem do primeiro slice ja implementado e criado ou
-  alterado por esta tarefa; apenas documentacao em res://ROADMAP.md e
-  res://DEVELOPMENT_LOG.md.
+  alterado por esta tarefa; apenas documentacao em res://ROADMAP.md,
+  res://DEVELOPMENT_LOG.md e res://.summerrules.
 - Investigacao, missoes, sobrevivencia, profissao, progressao ampla e save/load
   continuam fora deste slice e nao sao iniciados nesta tarefa.
+- Demonios (Boss, Mini-Boss, Elite, Soldado), combate, equipa de Corvax,
+  companheiros recrutaveis, recrutamento, experiencia, progressao e o objetivo
+  final contra Iblis nao sao implementados; a fundacao narrativa registada e
+  clarificada orienta fases futuras, sem gameplay nesta fase.
 
 Posicao herdada do fecho de Alpha 1.3:
 - O GIS permanece como fonte de referencia/edicao e o runtime normal usa
@@ -375,10 +418,10 @@ Proxima acao (apos esta atualizacao):
   registado no DEVELOPMENT_LOG.
 - Proxima tarefa da Alpha 1.4: definir com o utilizador o proximo incremento
   narrativo/jogavel (proximo slice ou conteudo a provar), sem iniciar
-  investigacao, missoes, sobrevivencia, profissao, progressao ampla nem
-  save/load nesta tarefa.
-- Manter profissao, investigacao, missoes e sobrevivencia em aberto; nao entram
-  neste incremento sem decisao do utilizador.
+  investigacao, missoes, sobrevivencia, profissao, progressao ampla, combate,
+  demonios, companheiros, recrutamento nem save/load nesta tarefa.
+- Manter profissao, investigacao, missoes, sobrevivencia, combate e demonios em
+  aberto; nao entram neste incremento sem decisao do utilizador.
 - Nao iniciar Alpha 1.5 nem qualquer nova sub-fase nesta tarefa.
 
 ## 7. Dependencias globais

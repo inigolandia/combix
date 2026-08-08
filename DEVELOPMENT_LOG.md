@@ -23,9 +23,16 @@ sem erros em prova de funcionalidade global.
   exploracao urbana, investigacao, missoes/objetivos e sobrevivencia, papel do
   personagem em aberto; primeiro slice jogavel decidido pelo utilizador,
   implementado e VALIDADO em Play (explorar e descobrir um local; HUD
-  persistente com 'Local Descoberto: Apartamento do Setor 1'); a sub-fase
-  Alpha 1.4 continua em andamento (proximo incremento narrativo/jogavel ainda
-  nao definido); ver entradas abaixo.
+  persistente com 'Local Descoberto: Apartamento do Setor 1'); fundacao
+  narrativa registada e clarificada (Corvax e o nome final do protagonista;
+  equipa composta por companheiros recrutaveis; Iblis no Capitolio a guardar o
+  Codificador Sagrado; escopo geografico total ainda em aberto entre apenas o
+  Setor 1 e toda Washington DC; Corvax encontra a equipa, ganha experiencia e
+  fica mais forte no Setor 1 antes de Iblis; hierarquia demoniaca do Setor 1
+  apenas planeada; contagens em aberto; ver entradas abaixo); o primeiro slice
+  permanece sem combate, demonios, companheiros ou missao neste momento; a
+  sub-fase Alpha 1.4 continua em andamento (proximo incremento narrativo/
+  jogavel ainda nao definido); ver entradas abaixo.
 
 ## Marco: Alpha 1.1 "Base tecnica estavel" (concluida)
 
@@ -525,6 +532,154 @@ entrada.
   open world RPG loop"), com push falhado e ramo ahead 1 do remoto; ver secao
   'Repositorio Git' abaixo.
 
+## Marco: Alpha 1.4 - Fundacao narrativa registada (decisao documental)
+
+Entrada documental da fundacao narrativa fornecida pelo utilizador, registada
+para orientar fases futuras sem implementar gameplay. Nenhum gameplay foi
+implementado nesta tarefa; apenas documentacao em res://.summerrules,
+res://ROADMAP.md e res://DEVELOPMENT_LOG.md.
+
+### Decidido (confirmado pelo utilizador)
+
+- Corvax e o soldado de elite protagonista da E.R.A. (Exercito da Resistencia
+  Antidemonios).
+- Corvax esta em Washington DC para reunir a sua equipa de soldados de elite.
+- O objetivo final e derrotar Iblis no local mais importante de Washington DC e
+  recuperar o Codificador Sagrado.
+- O Setor 1 sera o inicio da jornada e tera uma hierarquia demoniaca: um Demonio
+  Boss do setor que serve Iblis, Demonios Mini-Boss subordinados a esse Boss,
+  Demonios Elite subordinados a cada Mini-Boss e Demonios Soldado subordinados a
+  cada Elite.
+- O primeiro slice jogavel da Alpha 1.4 permanece inalterado: exploracao urbana
+  e descoberta de um unico local, sem combate, demonios ou missao neste momento.
+
+### Em aberto (nao decidido)
+
+- Numero de Mini-Bosses, Elites e Soldados do Setor 1 (nao decidido; nao
+  inventado nesta tarefa).
+- Local final concreto do confronto com Iblis (apenas registado que sera o local
+  mais importante de Washington DC; nao nomeado).
+- Nome da equipa de Corvax, companheiros e missoes concretas (nao inventados).
+- Sistemas de combate e detalhes de implementacao da hierarquia demoniaca.
+
+### Nao implementado
+
+- Nenhum demonio (Boss, Mini-Boss, Elite ou Soldado), boss, combate, equipa,
+  companheiro, missao ou sistema de gameplay foi criado ou alterado por esta
+  decisao. Apenas res://.summerrules, res://ROADMAP.md e res://DEVELOPMENT_LOG.md
+  foram atualizados.
+
+### Confirmado pelo utilizador
+
+- A fundacao narrativa foi fornecida como decisao do utilizador antes de
+  continuar o desenvolvimento; registada sem implementar gameplay.
+
+### Nao verificado / desconhecido
+
+- Nenhuma validacao em Play e aplicavel: esta tarefa nao implementa gameplay.
+- O comportamento do jogo continua o estado de Alpha 1.4 (primeiro slice
+  validado), sem demonios nem combate.
+
+### Estado Git conhecido
+
+- Esta atualizacao documental (fundacao narrativa da Alpha 1.4) altera
+  res://.summerrules, res://ROADMAP.md e res://DEVELOPMENT_LOG.md (alteracoes
+  nao commitadas apos esta tarefa).
+- Nenhuma operacao Git foi executada nesta tarefa; o commit/push documental fica
+  para o coordenador/utilizador.
+
+### Proxima acao
+
+- Coordenador/utilizador executa o commit/push documental desta decisao (Git nao
+  executado nesta tarefa).
+- Proxima tarefa da Alpha 1.4: definir com o utilizador o proximo incremento
+  narrativo/jogavel, sem iniciar investigacao, missoes, sobrevivencia, profissao,
+  combate, demonios nem save/load nesta tarefa.
+- Nao iniciar Alpha 1.5 nem implementar demonios, bosses, combate, companheiros,
+  missoes ou objetivo final nesta decisao documental.
+
+## Marco: Alpha 1.4 - Fundacao narrativa clarificada (decisao documental)
+
+Entrada documental das clarificacoes da fundacao narrativa da Alpha 1.4,
+confirmadas pelo utilizador, registadas para orientar fases futuras sem
+implementar gameplay. Nenhum gameplay foi implementado nesta tarefa; apenas
+documentacao em res://.summerrules, res://ROADMAP.md e res://DEVELOPMENT_LOG.md.
+
+### Decidido (clarificacoes confirmadas pelo utilizador)
+
+- Corvax e o nome final do protagonista, soldado de elite da E.R.A. (Exercito
+  da Resistencia Antidemonios).
+- A equipa de soldados de elite que Corvax reune sera composta por companheiros
+  recrutaveis.
+- Iblis esta no Capitolio (o local mais importante de Washington DC) e guarda o
+  Codificador Sagrado; o objetivo final e derrotar Iblis e recuperar o
+  Codificador Sagrado.
+- O Setor 1 sera o inicio da jornada: Corvax tera de encontrar os elementos da
+  sua equipa no Setor 1, ganhar experiencia e ficar mais forte antes de chegar
+  a Iblis.
+- A hierarquia demoniaca do Setor 1 fica apenas planeada por agora: um Demonio
+  Boss do setor que serve Iblis, Demonios Mini-Boss subordinados a esse Boss,
+  Demonios Elite subordinados a cada Mini-Boss e Demonios Soldado subordinados
+  a cada Elite.
+- O primeiro slice jogavel da Alpha 1.4 permanece inalterado e validado:
+  exploracao urbana e descoberta de um unico local, sem combate, demonios,
+  companheiros ou missao neste momento.
+
+### Em aberto (nao decidido)
+
+- Escopo geografico total do jogo: ainda em aberto entre apenas o Setor 1 e
+  toda Washington DC; o Capitolio e a localizacao narrativa de Iblis, mas o
+  mapa total nao esta decidido.
+- Numero de Mini-Bosses, Elites e Soldados do Setor 1 (nao decidido; nao
+  inventado nesta tarefa).
+- Localizacao concreta do Boss do Setor (nao decidida).
+- Nome da equipa de Corvax, numero e nomes dos companheiros recrutaveis e
+  sistema de recrutamento (nao inventados).
+- Missoes concretas, sistemas de combate e detalhes de experiencia/progressao
+  (nao inventados).
+
+### Nao implementado
+
+- Nenhum demonio (Boss, Mini-Boss, Elite ou Soldado), boss, combate, equipa,
+  companheiro, recrutamento, experiencia, progressao, missao ou sistema de
+  gameplay foi criado ou alterado por estas clarificacoes. Apenas
+  res://.summerrules, res://ROADMAP.md e res://DEVELOPMENT_LOG.md foram
+  atualizados.
+- O primeiro slice jogavel validado (exploracao urbana e descoberta de um
+  unico local) nao foi alterado.
+
+### Confirmado pelo utilizador
+
+- As clarificacoes foram confirmadas pelo utilizador como respostas as
+  perguntas de clarificacao da fundacao narrativa; registadas sem implementar
+  gameplay.
+
+### Nao verificado / desconhecido
+
+- Nenhuma validacao em Play e aplicavel: esta tarefa nao implementa gameplay.
+- O comportamento do jogo continua o estado de Alpha 1.4 (primeiro slice
+  validado), sem demonios, companheiros nem combate.
+
+### Estado Git conhecido
+
+- Esta atualizacao documental (clarificacoes da fundacao narrativa da Alpha 1.4)
+  altera res://.summerrules, res://ROADMAP.md e res://DEVELOPMENT_LOG.md
+  (alteracoes nao commitadas apos esta tarefa).
+- Nenhuma operacao Git foi executada nesta tarefa; o commit/push documental fica
+  para o coordenador/utilizador.
+
+### Proxima acao
+
+- Coordenador/utilizador executa o commit/push documental destas clarificacoes
+  (Git nao executado nesta tarefa).
+- Proxima tarefa da Alpha 1.4: definir com o utilizador o proximo incremento
+  narrativo/jogavel, sem iniciar investigacao, missoes, sobrevivencia, profissao,
+  combate, demonios, companheiros, recrutamento, experiencia nem save/load nesta
+  tarefa.
+- Nao iniciar Alpha 1.5 nem implementar demonios, bosses, combate, companheiros,
+  recrutamento, experiencia, progressao, missoes ou o objetivo final nesta
+  decisao documental.
+
 ## Repositorio Git (estado conhecido)
 
 - Ramo: main. Ultimo commit local conhecido: d44a024 ("Define Alpha 1.4 open
@@ -536,6 +691,14 @@ entrada.
   res://ROADMAP.md e res://DEVELOPMENT_LOG.md) fica preparada para commit/push
   pelo coordenador/utilizador. Nao foi executada nenhuma operacao Git nesta
   tarefa.
+- Esta atualizacao documental (fundacao narrativa da Alpha 1.4 em
+  res://.summerrules, res://ROADMAP.md e res://DEVELOPMENT_LOG.md) fica
+  preparada para commit/push pelo coordenador/utilizador. Nao foi executada
+  nenhuma operacao Git nesta tarefa.
+- Esta atualizacao documental (clarificacoes da fundacao narrativa da Alpha 1.4
+  em res://.summerrules, res://ROADMAP.md e res://DEVELOPMENT_LOG.md) fica
+  preparada para commit/push pelo coordenador/utilizador. Nao foi executada
+  nenhuma operacao Git nesta tarefa.
 - Remoto: https://github.com/inigomaio/combix.git
 - Commits existentes:
   - e9c1b98: backup inicial do projeto.
