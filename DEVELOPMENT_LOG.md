@@ -30,9 +30,17 @@ sem erros em prova de funcionalidade global.
   Setor 1 e toda Washington DC; Corvax encontra a equipa, ganha experiencia e
   fica mais forte no Setor 1 antes de Iblis; hierarquia demoniaca do Setor 1
   apenas planeada; contagens em aberto; ver entradas abaixo); o primeiro slice
-  permanece sem combate, demonios, companheiros ou missao neste momento; a
-  sub-fase Alpha 1.4 continua em andamento (proximo incremento narrativo/
-  jogavel ainda nao definido); ver entradas abaixo.
+  permanece sem combate, demonios, companheiros ou missao neste momento; o
+  slice de descoberta foi expandido para seis locais descobriveis (edificios
+  01 a 06) e a distancia de ativacao foi normalizada por fachada: implementado
+  e verificado tecnicamente (seis BoxShape3D dedicadas pelo footprint real de
+  cada edificio mais margem comum de 0.5 unidades em X e Z; altura 0.8;
+  collision_mask=2, script, hud_path, polling, idempotencia e HUD acumulativo
+  preservados); o playtest manual detalhado dos seis locais e a igualdade
+  visual das distancias permanecem nao verificados manualmente (o utilizador
+  respondeu apenas 'podemos continuar'); a sub-fase Alpha 1.4 continua em
+  andamento (proximo incremento do slice de descoberta ainda nao escolhido);
+  ver entradas abaixo.
 
 ## Marco: Alpha 1.1 "Base tecnica estavel" (concluida)
 
@@ -680,13 +688,93 @@ documentacao em res://.summerrules, res://ROADMAP.md e res://DEVELOPMENT_LOG.md.
   recrutamento, experiencia, progressao, missoes ou o objetivo final nesta
   decisao documental.
 
+## Marco: Alpha 1.4 - Seis locais descobriveis e normalizacao da distancia de ativacao (implementado e verificado tecnicamente)
+
+Entrada da expansao do slice de descoberta da Alpha 1.4 para seis locais
+descobriveis e da normalizacao da distancia de ativacao por fachada, escolhida
+pelo utilizador. O slice foi implementado e verificado tecnicamente; o playtest
+manual detalhado dos seis locais ainda nao foi verificado. A sub-fase Alpha 1.4
+continua EM ANDAMENTO e nao e fechada por esta entrada.
+
+### Contexto
+
+- O primeiro slice foi validado com um unico local descobrivel (Area3D do
+  hipermercado); foram adicionados cinco locais descobriveis adicionais,
+  totalizando seis (edificio 01 - hipermercado de res-do-chao, edificio 02 -
+  residencial pequeno, edificio 03 - moradia geminada, edificio 04 - comercio
+  local, edificio 05 - edificio comunitario e edificio 06 - armazem
+  industrial).
+- O utilizador reportou que as distancias de ativacao variavam; a inspecao
+  confirmou que todos partilhavam uma shape; o utilizador escolheu 'Igual a
+  partir da fachada'.
+
+### O que foi implementado (aplicado)
+
+- Seis BoxShape3D dedicadas em Main/DiscoveryTrigger (res://main.tscn),
+  dimensionadas pelo footprint real de cada edificio mais uma margem comum de
+  0.5 unidades em X e Z; altura 0.8.
+- Preservados: collision_mask=2, script, hud_path, polling, idempotencia e HUD
+  acumulativo.
+- Jogador colocado perto do residencial e dentro do Setor 1 para o teste.
+
+### Verificado tecnicamente (nao substitui playtest manual)
+
+- A verificacao tecnica arrancou sem erros observados e confirmou a descoberta
+  do residencial.
+
+### Confirmado pelo utilizador
+
+- O utilizador respondeu apenas 'podemos continuar', sem descrever o resultado
+  dos seis testes. Esta resposta autoriza a continuacao, mas NAO confirma
+  visualmente a normalizacao nem o playtest detalhado dos seis locais.
+
+### Nao verificado / desconhecido
+
+- Playtest manual detalhado dos seis locais descobriveis (nao descrito pelo
+  utilizador).
+- Igualdade visual das distancias de ativacao por fachada (nao confirmada;
+  registada como implementada e verificada tecnicamente, nao como confirmada
+  visualmente).
+- Desempenho continuo e funcionalidade global continuam fora do alcance desta
+  confirmacao.
+
+### Estado
+
+- Slice de descoberta expandido para seis locais descobriveis; normalizacao da
+  distancia de ativacao por fachada implementada e verificada tecnicamente.
+- Alpha 1.4 permanece EM ANDAMENTO; o proximo incremento do slice de
+  descoberta ainda nao foi escolhido.
+
+### Proxima acao
+
+- Coordenador/utilizador executa o commit/push documental desta atualizacao
+  (Git nao executado nesta tarefa).
+- Proxima tarefa da Alpha 1.4: escolher com o utilizador o proximo incremento
+  do slice de descoberta (nenhum novo incremento e inventado nesta tarefa); nao
+  iniciar investigacao, missoes, sobrevivencia, profissao, progressao ampla,
+  combate, demonios, companheiros, recrutamento nem save/load nesta tarefa.
+- Confirmar manualmente, quando o utilizador puder, o playtest detalhado dos
+  seis locais e a igualdade visual das distancias de ativacao.
+- Nao iniciar Alpha 1.5 nem implementar demonios, bosses, combate, companheiros,
+  missoes ou objetivo final nesta atualizacao.
+
+### Estado Git conhecido
+
+- Existem alteracoes locais atuais em res://main.tscn (expansao dos seis locais
+  descobriveis e normalizacao da distancia de ativacao) e res://discovery_hud.gd,
+  alem desta atualizacao documental (res://ROADMAP.md e res://DEVELOPMENT_LOG.md).
+- Nenhuma operacao Git foi executada nesta tarefa; o coordenador fara o commit
+  depois desta atualizacao.
+
 ## Repositorio Git (estado conhecido)
 
 - Ramo: main. Ultimo commit local conhecido: d44a024 ("Define Alpha 1.4 open
   world RPG loop"); o push desse commit falhou e o ramo esta ahead 1 do
-  remoto. Ha alteracoes nao commitadas nos documentos e nos ficheiros do
-  primeiro slice (res://discovery_trigger.gd, res://discovery_hud.gd e
-  res://main.tscn: DiscoveryTrigger/DiscoveryHUD).
+  remoto. Existem alteracoes locais atuais em res://main.tscn (expansao dos
+  seis locais descobriveis e normalizacao da distancia de ativacao) e
+  res://discovery_hud.gd, alem desta atualizacao documental (res://ROADMAP.md
+  e res://DEVELOPMENT_LOG.md); o coordenador fara o commit depois desta
+  atualizacao.
 - Esta atualizacao documental (validacao do primeiro slice de Alpha 1.4 em
   res://ROADMAP.md e res://DEVELOPMENT_LOG.md) fica preparada para commit/push
   pelo coordenador/utilizador. Nao foi executada nenhuma operacao Git nesta
@@ -722,6 +810,12 @@ documentacao em res://.summerrules, res://ROADMAP.md e res://DEVELOPMENT_LOG.md.
 - Esta atualizacao documental (validacao do primeiro slice de Alpha 1.4 em
   res://ROADMAP.md e res://DEVELOPMENT_LOG.md) fica preparada para commit/push
   pelo coordenador/utilizador; nenhuma operacao Git foi executada nesta tarefa.
+- Esta atualizacao documental (expansao dos seis locais descobriveis e
+  normalizacao da distancia de ativacao em res://ROADMAP.md e
+  res://DEVELOPMENT_LOG.md) fica preparada para commit/push pelo
+  coordenador/utilizador; os ficheiros de jogo alterados (res://main.tscn e
+  res://discovery_hud.gd) serao commitados pelo coordenador. Nao foi executada
+  nenhuma operacao Git nesta tarefa.
 - Nota: as operacoes Git de marco sao executadas pelo coordenador/utilizador, nao
   automaticamente.
 

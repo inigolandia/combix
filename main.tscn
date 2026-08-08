@@ -230,8 +230,23 @@ cull_mode = 2
 shading_mode = 0
 albedo_color = Color(0.6039216, 0.6627451, 0.654902, 0.72)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vivmo"]
-size = Vector3(3, 0.8, 3.5)
+[sub_resource type="BoxShape3D" id="BoxShape3D_apto"]
+size = Vector3(2.19, 0.8, 2.43)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_resi"]
+size = Vector3(1.36, 0.8, 1.48)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_town"]
+size = Vector3(1.29, 0.8, 1.71)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_merc"]
+size = Vector3(1.59, 0.8, 1.71)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_comu"]
+size = Vector3(1.83, 0.8, 2.07)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_indu"]
+size = Vector3(2.66, 0.8, 3.38)
 
 [node name="Main" type="Node3D" unique_id=547454839]
 metadata/sector_label = "Setor 1 — Ward 8 / leste de Anacostia — limites aproximados"
@@ -533,7 +548,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001785, 0)
 shape = SubResource("Shape_plate_15")
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1233543996 groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.021, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0.021, -12)
 collision_layer = 2
 script = ExtResource("2_player")
 
@@ -797,7 +812,57 @@ location_name = "Apartamento do Setor 1"
 hud_path = NodePath("../DiscoveryHUD")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DiscoveryTrigger" unique_id=1566077099]
-shape = SubResource("BoxShape3D_vivmo")
+shape = SubResource("BoxShape3D_apto")
+
+[node name="DiscoveryTrigger_Residencial" type="Area3D" parent="." unique_id=1242180305]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -12)
+collision_mask = 2
+script = ExtResource("16_2cqfq")
+location_name = "Residencial do Setor 1"
+hud_path = NodePath("../DiscoveryHUD")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DiscoveryTrigger_Residencial" unique_id=1638644978]
+shape = SubResource("BoxShape3D_resi")
+
+[node name="DiscoveryTrigger_Townhouse" type="Area3D" parent="." unique_id=39193561]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+collision_mask = 2
+script = ExtResource("16_2cqfq")
+location_name = "Moradias do Setor 1"
+hud_path = NodePath("../DiscoveryHUD")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DiscoveryTrigger_Townhouse" unique_id=662516543]
+shape = SubResource("BoxShape3D_town")
+
+[node name="DiscoveryTrigger_Comercio" type="Area3D" parent="." unique_id=2031946685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 12)
+collision_mask = 2
+script = ExtResource("16_2cqfq")
+location_name = "Comercio do Setor 1"
+hud_path = NodePath("../DiscoveryHUD")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DiscoveryTrigger_Comercio" unique_id=787536597]
+shape = SubResource("BoxShape3D_merc")
+
+[node name="DiscoveryTrigger_Comunitaria" type="Area3D" parent="." unique_id=1702783564]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
+collision_mask = 2
+script = ExtResource("16_2cqfq")
+location_name = "Centro Comunitario do Setor 1"
+hud_path = NodePath("../DiscoveryHUD")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DiscoveryTrigger_Comunitaria" unique_id=806513003]
+shape = SubResource("BoxShape3D_comu")
+
+[node name="DiscoveryTrigger_Industrial" type="Area3D" parent="." unique_id=1544167976]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 12)
+collision_mask = 2
+script = ExtResource("16_2cqfq")
+location_name = "Armazem Industrial do Setor 1"
+hud_path = NodePath("../DiscoveryHUD")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DiscoveryTrigger_Industrial" unique_id=778928807]
+shape = SubResource("BoxShape3D_indu")
 
 [node name="DiscoveryHUD" type="CanvasLayer" parent="." unique_id=460016537]
 script = ExtResource("17_yaehf")
@@ -809,7 +874,7 @@ anchor_right = 0.5
 offset_left = -250.0
 offset_top = 8.0
 offset_right = 250.0
-offset_bottom = 48.0
+offset_bottom = 260.0
 grow_horizontal = 2
 color = Color(0.05, 0.05, 0.08, 0.82)
 
@@ -820,7 +885,7 @@ anchor_right = 0.5
 offset_left = -240.0
 offset_top = 10.0
 offset_right = 240.0
-offset_bottom = 46.0
+offset_bottom = 250.0
 grow_horizontal = 2
 horizontal_alignment = 1
 vertical_alignment = 1

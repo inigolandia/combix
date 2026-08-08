@@ -54,8 +54,15 @@ res://.summerrules).
   a equipa, ganha experiencia e fica mais forte no Setor 1 antes de Iblis;
   hierarquia demoniaca do Setor 1 apenas planeada; contagens em aberto; ver
   secao 6.1); o primeiro slice permanece sem combate, demonios, companheiros ou
-  missao neste momento. A sub-fase Alpha 1.4 continua EM ANDAMENTO: falta
-  definir o proximo incremento narrativo/jogavel.
+  missao neste momento. O slice de descoberta foi expandido para seis locais
+  descobriveis (edificios 01 a 06) e a distancia de ativacao foi normalizada
+  por fachada: implementado e verificado tecnicamente (seis BoxShape3D
+  dedicadas pelo footprint real de cada edificio mais margem comum de 0.5
+  unidades em X e Z; altura 0.8; ver secao 6.1); o playtest manual detalhado
+  dos seis locais e a igualdade visual das distancias permanecem nao
+  verificados manualmente (o utilizador respondeu apenas 'podemos continuar').
+  A sub-fase Alpha 1.4 continua EM ANDAMENTO: falta escolher o proximo
+  incremento do slice de descoberta.
 
 ## 4. Alpha 1.1 - Base tecnica estavel (concluida)
 
@@ -358,10 +365,39 @@ Primeiro slice validado (explorar e descobrir um local):
   Alpha 1.4; a sub-fase Alpha 1.4 continua EM ANDAMENTO e nao e fechada por
   este slice.
 
+Expansao dos locais descobriveis e normalizacao da distancia de ativacao
+(implementado e verificado tecnicamente; playtest manual detalhado pendente):
+- Contexto: o primeiro slice foi validado com um unico local descobrivel
+  (Area3D do hipermercado); foram adicionados cinco locais descobriveis
+  adicionais, totalizando seis (edificio 01 - hipermercado de res-do-chao,
+  edificio 02 - residencial pequeno, edificio 03 - moradia geminada, edificio
+  04 - comercio local, edificio 05 - edificio comunitario e edificio 06 -
+  armazem industrial). O utilizador reportou que as distancias de ativacao
+  variavam; a inspecao confirmou que todos partilhavam uma shape; o utilizador
+  escolheu 'Igual a partir da fachada'.
+- Aplicado (Main/DiscoveryTrigger em res://main.tscn): seis BoxShape3D
+  dedicadas, dimensionadas pelo footprint real de cada edificio mais uma
+  margem comum de 0.5 unidades em X e Z; altura 0.8; collision_mask=2, script,
+  hud_path, polling, idempotencia e HUD acumulativo preservados.
+- Jogador colocado perto do residencial e dentro do Setor 1 para o teste.
+- Verificado tecnicamente: a verificacao tecnica arrancou sem erros observados
+  e confirmou a descoberta do residencial.
+- Nao verificado manualmente: o utilizador respondeu apenas 'podemos
+  continuar', sem descrever o resultado dos seis testes; a igualdade visual
+  das distancias de ativacao por fachada e o playtest detalhado dos seis
+  locais permanecem por confirmar manualmente. Esta normalizacao NAO e
+  marcada como confirmada visualmente pelo utilizador.
+- Estado: implementado e verificado tecnicamente; confirmacao manual detalhada
+  pendente. O slice de descoberta permanece dentro da sub-fase Alpha 1.4, que
+  continua EM ANDAMENTO.
+
 Nao decidido (permanece em aberto nesta sub-fase):
 - Papel profissional concreto do personagem (nenhuma profissao escolhida).
-- Proximo incremento narrativo/jogavel da Alpha 1.4 (a definir com o utilizador
-  na proxima tarefa; nao inventado nesta tarefa).
+- Proximo incremento do slice de descoberta da Alpha 1.4 (a escolher com o
+  utilizador na proxima tarefa; nao inventado nesta tarefa). A expansao dos
+  seis locais descobriveis e a normalizacao da distancia de ativacao foram
+  implementadas e verificadas tecnicamente; o playtest manual detalhado dos
+  seis locais ainda nao foi verificado.
 - Escopo geografico total do jogo: ainda em aberto entre apenas o Setor 1 e
   toda Washington DC; o Capitolio e a localizacao narrativa de Iblis, mas o
   mapa total nao esta decidido.
@@ -413,13 +449,18 @@ quando estes criterios estiverem cumpridos):
   executado pelo coordenador/utilizador.
 
 Proxima acao (apos esta atualizacao):
-- Coordenador/utilizador executa o commit/push documental desta validacao (Git
-  nao executado nesta tarefa); o estado Git local/remoto conhecido esta
+- Coordenador/utilizador executa o commit/push documental desta atualizacao
+  (Git nao executado nesta tarefa); o estado Git local/remoto conhecido esta
   registado no DEVELOPMENT_LOG.
-- Proxima tarefa da Alpha 1.4: definir com o utilizador o proximo incremento
-  narrativo/jogavel (proximo slice ou conteudo a provar), sem iniciar
-  investigacao, missoes, sobrevivencia, profissao, progressao ampla, combate,
-  demonios, companheiros, recrutamento nem save/load nesta tarefa.
+- Proxima tarefa da Alpha 1.4: escolher com o utilizador o proximo incremento
+  do slice de descoberta (novo local, comportamento ou conteudo a provar), sem
+  iniciar investigacao, missoes, sobrevivencia, profissao, progressao ampla,
+  combate, demonios, companheiros, recrutamento nem save/load nesta tarefa;
+  nenhum novo incremento e inventado nesta tarefa.
+- Confirmar manualmente, quando o utilizador puder, o playtest detalhado dos
+  seis locais descobriveis e a igualdade visual das distancias de ativacao por
+  fachada (normalizacao implementada e verificada tecnicamente, nao confirmada
+  visualmente).
 - Manter profissao, investigacao, missoes, sobrevivencia, combate e demonios em
   aberto; nao entram neste incremento sem decisao do utilizador.
 - Nao iniciar Alpha 1.5 nem qualquer nova sub-fase nesta tarefa.
@@ -435,11 +476,11 @@ Proxima acao (apos esta atualizacao):
   estimativas claramente identificadas quando nao existirem.
 - Repositorio Git em main; o ultimo commit local conhecido e d44a024
   ("Define Alpha 1.4 open world RPG loop"), com o push falhado e o ramo ahead
-  1 do remoto; existem alteracoes nao commitadas nos documentos e nos ficheiros
-  do primeiro slice (res://discovery_trigger.gd, res://discovery_hud.gd e
-  res://main.tscn: DiscoveryTrigger/DiscoveryHUD); o coordenador/utilizador
-  deve executar o commit/push apos esta atualizacao; estado detalhado no
-  DEVELOPMENT_LOG (https://github.com/inigomaio/combix.git).
+  1 do remoto; existem alteracoes locais atuais em res://main.tscn (expansao
+  dos seis locais descobriveis e normalizacao da distancia de ativacao) e
+  res://discovery_hud.gd, alem desta atualizacao documental; o coordenador
+  fara o commit depois desta atualizacao; estado detalhado no DEVELOPMENT_LOG
+  (https://github.com/inigomaio/combix.git).
 
 ## 8. Riscos conhecidos
 
