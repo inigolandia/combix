@@ -41,9 +41,14 @@ res://.summerrules).
   utilizador; ver secao 6.
 - Alpha 1.4 "Definicao do loop principal": EM ANDAMENTO; a decisao de design foi
   registada (RPG narrativo de mundo aberto com loop composto de exploracao
-  urbana, investigacao, missoes/objetivos e sobrevivencia; ver secao 6.1). A
-  sub-fase continua para definir o primeiro slice jogavel, sem implementar
-  gameplay.
+  urbana, investigacao, missoes/objetivos e sobrevivencia; ver secao 6.1) e o
+  primeiro slice jogavel foi decidido pelo utilizador: exploracao urbana e
+  descoberta de um unico local, com feedback claro e progresso minimo de
+  descoberta (ver secao 6.1). O primeiro slice foi implementado e VALIDADO pelo
+  utilizador em Play (ao entrar na Area3D do hipermercado, o HUD apareceu com
+  'Local Descoberto: Apartamento do Setor 1' e permaneceu visivel; ver
+  secao 6.1). A sub-fase Alpha 1.4 continua EM ANDAMENTO: falta definir o
+  proximo incremento narrativo/jogavel.
 
 ## 4. Alpha 1.1 - Base tecnica estavel (concluida)
 
@@ -272,9 +277,12 @@ Riscos:
 
 ## 6.1. Alpha 1.4 - Definicao do loop principal (em andamento)
 
-Escopo da sub-fase: registar a decisao de design e o loop principal do jogo e
-terminar na definicao do primeiro slice jogavel. Nesta sub-fase nao e
-implementado gameplay; apenas decisoes e documentacao.
+Escopo da sub-fase: registar a decisao de design e o loop principal do jogo,
+definir o primeiro slice jogavel e validar esse primeiro slice. O primeiro
+slice foi implementado numa tarefa de gameplay posterior a decisao documental e
+esta validado pelo utilizador (ver 'Primeiro slice validado' abaixo); a
+sub-fase continua em andamento ate o proximo incremento narrativo/jogavel ser
+definido.
 
 Decisao de design registada (visao, aprovada pelo utilizador no questionario da
 sub-fase):
@@ -290,17 +298,48 @@ sub-fase):
   de autoridade), mas o utilizador, quando clarificado, escolheu manter a
   estrutura de papeis em aberto; nenhuma profissao e escolhida nesta fase.
 
+Decidido (primeiro slice jogavel, escolha do utilizador):
+- Primeiro slice jogavel da Alpha 1.4: exploracao urbana e descoberta de um
+  unico local. O nucleo a provar e: o jogador explora uma zona do Setor 1,
+  chega a um local e recebe feedback claro de descoberta, com progresso minimo
+  de descoberta.
+- Fora do primeiro slice (nao inventado, nao incluido): profissao, investigacao,
+  missoes/objetivos, sobrevivencia e qualquer outro sistema de gameplay,
+  UI/HUD, sinais, inputs, assets ou cenas fora dos criados para o slice.
+- Implementacao do primeiro slice: concluida e validada pelo utilizador em Play
+  (ver 'Primeiro slice validado' abaixo).
+
+Primeiro slice validado (explorar e descobrir um local):
+- Implementado (aplicado): res://discovery_trigger.gd (trigger de descoberta),
+  res://discovery_hud.gd (HUD de descoberta) e os nodos Main/DiscoveryTrigger
+  (Area3D) e Main/DiscoveryHUD em res://main.tscn.
+- Correcao tecnica aplicada: collision_mask=2 na Area3D do trigger para
+  corresponder a camada do Player, e polling de get_overlapping_bodies()
+  adicionado como fallback porque o sinal body_entered nao foi fiavel neste
+  build.
+- Confirmado pelo utilizador em Play: ao entrar na Area3D do hipermercado, o
+  HUD apareceu com 'Local Descoberto: Apartamento do Setor 1' e a mensagem
+  permaneceu visivel. Esta confirmacao cobre esse comportamento naquela
+  execucao; nao prova o jogo completo.
+- Nao verificado: investigacao, missoes, sobrevivencia, profissao, progressao
+  ampla e save/load nao existem ainda; sao planeados e ficam fora deste slice.
+- Estado do slice: CONCLUIDO e VALIDADO pelo utilizador dentro da sub-fase
+  Alpha 1.4; a sub-fase Alpha 1.4 continua EM ANDAMENTO e nao e fechada por
+  este slice.
+
 Nao decidido (permanece em aberto nesta sub-fase):
 - Papel profissional concreto do personagem (nenhuma profissao escolhida).
-- Primeiro objetivo/missao concreta do primeiro slice jogavel (a definir dentro
-  da sub-fase, sem inventar conteudo).
+- Proximo incremento narrativo/jogavel da Alpha 1.4 (a definir com o utilizador
+  na proxima tarefa; nao inventado nesta tarefa).
 - Regras detalhadas de sobrevivencia (fome, saude, abrigo, clima, etc.).
 - Faccoes, sistemas de combate, narrativa concreta e conteudo detalhado.
 
-Nao implementado (nada de gameplay nesta sub-fase):
-- Nenhum sistema de gameplay, missao, NPC, veiculo, UI, audio, asset, cena ou
-  configuracao de gameplay e criado ou alterado por esta decisao; apenas
-  documentacao em res://.summerrules, ROADMAP.md e DEVELOPMENT_LOG.md.
+Nao implementado (fora desta tarefa de validacao documental):
+- Nenhum sistema de gameplay alem do primeiro slice ja implementado e criado ou
+  alterado por esta tarefa; apenas documentacao em res://ROADMAP.md e
+  res://DEVELOPMENT_LOG.md.
+- Investigacao, missoes, sobrevivencia, profissao, progressao ampla e save/load
+  continuam fora deste slice e nao sao iniciados nesta tarefa.
 
 Posicao herdada do fecho de Alpha 1.3:
 - O GIS permanece como fonte de referencia/edicao e o runtime normal usa
@@ -322,18 +361,24 @@ quando estes criterios estiverem cumpridos):
 - Progressao composta documentada (descobertas/locais, objetivos, reputacao/
   relacoes, mundo aberto) como visao.
 - Papel profissional do personagem mantido em aberto, sem escolha de profissao.
-- Primeiro slice jogavel definido e documentado (o que o jogador faz, objetivo
-  basico e condicao de fim de ciclo) e aprovado pelo utilizador, sem inventar
-  missao concreta, profissao ou sistemas.
+- Primeiro slice jogavel definido, documentado, aprovado e VALIDADO pelo
+  utilizador: exploracao urbana e descoberta de um unico local, com feedback
+  claro ao jogador e progresso minimo de descoberta; sem profissao,
+  investigacao, missao ou sobrevivencia neste slice; a sub-fase Alpha 1.4
+  continua em andamento (proximo incremento narrativo/jogavel nao definido).
 - Confirmacao do utilizador do estado documental; commit de marco documental
   executado pelo coordenador/utilizador.
 
 Proxima acao (apos esta atualizacao):
-- Coordenador/utilizador executa o commit/push documental desta decisao (Git nao
-  executado nesta tarefa).
-- Definir e documentar o primeiro slice jogavel dentro da Alpha 1.4, sem
-  implementar gameplay ainda; manter o papel do personagem em aberto ate decisao
-  explicita do utilizador.
+- Coordenador/utilizador executa o commit/push documental desta validacao (Git
+  nao executado nesta tarefa); o estado Git local/remoto conhecido esta
+  registado no DEVELOPMENT_LOG.
+- Proxima tarefa da Alpha 1.4: definir com o utilizador o proximo incremento
+  narrativo/jogavel (proximo slice ou conteudo a provar), sem iniciar
+  investigacao, missoes, sobrevivencia, profissao, progressao ampla nem
+  save/load nesta tarefa.
+- Manter profissao, investigacao, missoes e sobrevivencia em aberto; nao entram
+  neste incremento sem decisao do utilizador.
 - Nao iniciar Alpha 1.5 nem qualquer nova sub-fase nesta tarefa.
 
 ## 7. Dependencias globais
@@ -345,12 +390,13 @@ Proxima acao (apos esta atualizacao):
   reais (res://world_scale.gd, res://.summerrules).
 - Mundo: Washington ficcional inspirada na real; dados oficiais quando disponiveis,
   estimativas claramente identificadas quando nao existirem.
-- Repositorio Git em main; a consolidacao PackedScene e a reparacao do parse
-  estao no commit local a98e604 ("Consolidate Alpha 1.3 building library"), cujo
-  push automatico falhou anteriormente; o coordenador/utilizador deve verificar
-  o estado do remoto e executar o commit de marco de fecho de Alpha 1.3 junto
-  com esta atualizacao documental
-  (https://github.com/inigolandia/combix.git).
+- Repositorio Git em main; o ultimo commit local conhecido e d44a024
+  ("Define Alpha 1.4 open world RPG loop"), com o push falhado e o ramo ahead
+  1 do remoto; existem alteracoes nao commitadas nos documentos e nos ficheiros
+  do primeiro slice (res://discovery_trigger.gd, res://discovery_hud.gd e
+  res://main.tscn: DiscoveryTrigger/DiscoveryHUD); o coordenador/utilizador
+  deve executar o commit/push apos esta atualizacao; estado detalhado no
+  DEVELOPMENT_LOG (https://github.com/inigomaio/combix.git).
 
 ## 8. Riscos conhecidos
 
@@ -368,6 +414,10 @@ Proxima acao (apos esta atualizacao):
   arranque sem erros observados) e o playtest manual pos-consolidacao foi
   realizado e confirmado pelo utilizador como perfeito; essa confirmacao cobre
   Alpha 1.3, nao o jogo completo.
+- Verificacao (primeiro slice Alpha 1.4): a confirmacao do HUD persistente ao
+  entrar na Area3D do hipermercado ('Local Descoberto: Apartamento do Setor 1')
+  cobre esse comportamento naquela execucao; nao prova o jogo completo nem os
+  sistemas planeados (investigacao, missoes, sobrevivencia, profissao, save/load).
 - Planeamento: o gameplay das fases seguintes nao esta decidido; evitar detalhar
   antes da decisao para nao criar compromissos falsos.
 

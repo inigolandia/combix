@@ -21,7 +21,11 @@ sem erros em prova de funcionalidade global.
 - Alpha 1.4: em andamento (definicao do loop principal); decisao de design
   registada como visao: RPG narrativo de mundo aberto com loop composto de
   exploracao urbana, investigacao, missoes/objetivos e sobrevivencia, papel do
-  personagem em aberto; ver entrada abaixo.
+  personagem em aberto; primeiro slice jogavel decidido pelo utilizador,
+  implementado e VALIDADO em Play (explorar e descobrir um local; HUD
+  persistente com 'Local Descoberto: Apartamento do Setor 1'); a sub-fase
+  Alpha 1.4 continua em andamento (proximo incremento narrativo/jogavel ainda
+  nao definido); ver entradas abaixo.
 
 ## Marco: Alpha 1.1 "Base tecnica estavel" (concluida)
 
@@ -396,24 +400,143 @@ tarefa; apenas decisoes e documentacao.
 
 - Coordenador/utilizador executa o commit/push documental desta decisao (Git nao
   executado nesta tarefa).
-- Definir e documentar o primeiro slice jogavel dentro da Alpha 1.4 (o que o
-  jogador faz, objetivo basico e condicao de fim de ciclo), aprovado pelo
-  utilizador, sem implementar gameplay e sem escolher profissao.
+- Primeiro slice jogavel definido e documentado na entrada seguinte (exploracao
+  urbana e descoberta de um unico local); implementar na proxima tarefa, sem
+  escolher profissao.
 - Manter o papel do personagem e as regras de sobrevivencia em aberto ate
   decisoes explicitas do utilizador.
 - Nao iniciar Alpha 1.5 nem implementar gameplay nesta fase.
 
+## Marco: Alpha 1.4 - Primeiro slice jogavel decidido (decisao documental)
+
+Entrada documental da escolha do primeiro slice jogavel da Alpha 1.4, feita
+pelo utilizador: explorar e descobrir um local. Nenhum gameplay foi
+implementado nesta tarefa; apenas documentacao em res://.summerrules,
+res://ROADMAP.md e res://DEVELOPMENT_LOG.md.
+
+### Decidido (pelo utilizador)
+
+- O utilizador escolheu explicitamente 'Explorar e descobrir um local' como o
+  primeiro nucleo a provar na Alpha 1.4.
+- Primeiro slice jogavel da Alpha 1.4: exploracao urbana e descoberta de um
+  unico local. O nucleo a provar e: o jogador explora uma zona do Setor 1,
+  chega a um local e recebe feedback claro de descoberta, com progresso minimo
+  de descoberta.
+
+### O que fica fora do primeiro slice (nao incluido, nao inventado)
+
+- Profissao do personagem (papel profissional permanece em aberto).
+- Investigacao (pistas, casos).
+- Missoes/objetivos concretos.
+- Sobrevivencia (fome, saude, abrigo, clima, etc.).
+- Nome do local descobrivel (nao inventado; a escolher com o utilizador na
+  implementacao).
+- Qualquer sistema de gameplay, UI/HUD, sinais, inputs, assets, cenas ou
+  configuracao de gameplay.
+
+### Nao implementado
+
+- Nenhum gameplay do primeiro slice foi implementado nesta tarefa; a
+  implementacao fica para a proxima tarefa de gameplay.
+
+### Nao verificado / desconhecido
+
+- Nenhuma validacao em Play e aplicavel: esta tarefa nao implementa gameplay.
+- O comportamento do jogo continua o estado de Alpha 1.3 ate a implementacao
+  do primeiro slice.
+
+### Planeado (proxima tarefa de gameplay)
+
+- Implementar o primeiro slice: exploracao urbana e descoberta de um unico
+  local, com feedback claro ao jogador e progresso minimo de descoberta.
+- Escolher com o utilizador qual local do Setor 1 (nome nao inventado nesta
+  tarefa).
+
+### Estado Git conhecido
+
+- Antes desta atualizacao: ultimo commit local d44a024
+  ("Define Alpha 1.4 open world RPG loop"); working tree limpo; ramo main
+  ahead 1 do remoto; o push desse commit falhou.
+- Remoto: https://github.com/inigomaio/combix.git
+- Esta atualizacao documental altera res://.summerrules, res://ROADMAP.md e
+  res://DEVELOPMENT_LOG.md (alteracoes nao commitadas apos esta tarefa).
+- Nenhuma operacao Git foi executada nesta tarefa; o commit/push documental fica
+  para o coordenador/utilizador.
+
+### Proxima acao
+
+- Coordenador/utilizador executa o commit/push documental desta decisao (Git nao
+  executado nesta tarefa).
+- Proxima tarefa: implementar o primeiro slice jogavel de Alpha 1.4 (ver
+  'Planeado' acima).
+- Nao iniciar Alpha 1.5 nem construir gameplay nesta decisao documental.
+
+## Marco: Alpha 1.4 - Primeiro slice jogavel implementado e validado (explorar e descobrir um local)
+
+Entrada da validacao do primeiro slice jogavel da Alpha 1.4, confirmada pelo
+utilizador em Play. O slice 'explorar e descobrir um local' esta CONCLUIDO e
+VALIDADO; a sub-fase Alpha 1.4 continua EM ANDAMENTO e nao e fechada por esta
+entrada.
+
+### O que foi implementado (aplicado)
+
+- res://discovery_trigger.gd (trigger de descoberta) e res://discovery_hud.gd
+  (HUD de descoberta) criados.
+- Main/DiscoveryTrigger (Area3D) e Main/DiscoveryHUD adicionados em
+  res://main.tscn.
+- Correcao tecnica aplicada: collision_mask=2 na Area3D do trigger para
+  corresponder a camada do Player.
+- Polling de get_overlapping_bodies() adicionado como fallback para detetar o
+  jogador, porque o sinal body_entered nao foi fiavel neste build.
+
+### Confirmado pelo utilizador
+
+- Em Play, ao entrar na Area3D do hipermercado, o HUD apareceu com
+  'Local Descoberto: Apartamento do Setor 1' e a mensagem permaneceu visivel
+  (nao desapareceu).
+- Esta confirmacao e evidencia de comportamento desse slice naquela execucao;
+  nao prova o jogo completo.
+
+### Nao verificado / desconhecido
+
+- Nao ha investigacao, missoes, sobrevivencia, profissao, progressao ampla nem
+  save/load; sao planeados e nao foram iniciados nesta tarefa.
+- Apenas o local do hipermercado (Area3D) foi validado; nenhum outro local
+  descobrivel foi testado.
+- A confirmacao e limitada a execucao relatada pelo utilizador; nao ha prova de
+  desempenho continuo nem de funcionalidade global.
+
+### Planeado (proxima acao da Alpha 1.4)
+
+- Definir com o utilizador o proximo incremento narrativo/jogavel da Alpha 1.4
+  (proximo slice ou conteudo a provar).
+- Nao iniciar investigacao, missoes, sobrevivencia, profissao, progressao ampla
+  nem save/load nesta tarefa.
+- Nao iniciar Alpha 1.5 nem criar outro local descobrivel nesta tarefa.
+
+### Estado Git conhecido
+
+- O Git local tem provavelmente alteracoes nao commitadas nos documentos e nos
+  ficheiros do slice (res://discovery_trigger.gd, res://discovery_hud.gd e
+  res://main.tscn: DiscoveryTrigger/DiscoveryHUD).
+- Nenhuma operacao Git foi executada nesta tarefa; o commit/push fica para o
+  coordenador/utilizador apos esta atualizacao.
+- Ultimo commit local conhecido nos documentos: d44a024 ("Define Alpha 1.4
+  open world RPG loop"), com push falhado e ramo ahead 1 do remoto; ver secao
+  'Repositorio Git' abaixo.
+
 ## Repositorio Git (estado conhecido)
 
-- Ramo: main. A consolidacao PackedScene e a reparacao do parse de res://main.tscn
-  foram consolidadas no commit local a98e604 ("Consolidate Alpha 1.3 building
-  library"); o push automatico desse commit falhou anteriormente, pelo que o
-  coordenador/utilizador deve verificar o estado do remoto apos esta atualizacao.
-- Esta atualizacao documental (ROADMAP.md e DEVELOPMENT_LOG.md) fecha Alpha 1.3 e
-  prepara o commit de marco de fecho (ex.: "Marco: Alpha 1.3 concluida") a
-  executar pelo coordenador/utilizador. Nao foi executada nenhuma operacao Git
-  nesta tarefa.
-- Remoto: https://github.com/inigolandia/combix.git
+- Ramo: main. Ultimo commit local conhecido: d44a024 ("Define Alpha 1.4 open
+  world RPG loop"); o push desse commit falhou e o ramo esta ahead 1 do
+  remoto. Ha alteracoes nao commitadas nos documentos e nos ficheiros do
+  primeiro slice (res://discovery_trigger.gd, res://discovery_hud.gd e
+  res://main.tscn: DiscoveryTrigger/DiscoveryHUD).
+- Esta atualizacao documental (validacao do primeiro slice de Alpha 1.4 em
+  res://ROADMAP.md e res://DEVELOPMENT_LOG.md) fica preparada para commit/push
+  pelo coordenador/utilizador. Nao foi executada nenhuma operacao Git nesta
+  tarefa.
+- Remoto: https://github.com/inigomaio/combix.git
 - Commits existentes:
   - e9c1b98: backup inicial do projeto.
   - 73fa72a: preferencias persistentes do roadmap e avisos de backup Git.
@@ -431,10 +554,11 @@ tarefa; apenas decisoes e documentacao.
   - a98e604: "Consolidate Alpha 1.3 building library" (commit local da
     consolidacao PackedScene e da reparacao do parse; push automatico falhou,
     estado do remoto a verificar pelo coordenador/utilizador).
-- Esta atualizacao documental (decisao de design de Alpha 1.4 em
-  res://.summerrules, res://ROADMAP.md e res://DEVELOPMENT_LOG.md) fica
-  preparada para commit/push pelo coordenador/utilizador; nenhuma operacao Git
-  foi executada nesta tarefa.
+  - d44a024: "Define Alpha 1.4 open world RPG loop" (ultimo commit local
+    conhecido; push falhou; ramo ahead 1 do remoto).
+- Esta atualizacao documental (validacao do primeiro slice de Alpha 1.4 em
+  res://ROADMAP.md e res://DEVELOPMENT_LOG.md) fica preparada para commit/push
+  pelo coordenador/utilizador; nenhuma operacao Git foi executada nesta tarefa.
 - Nota: as operacoes Git de marco sao executadas pelo coordenador/utilizador, nao
   automaticamente.
 

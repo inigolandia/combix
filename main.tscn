@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" path="res://static_building_01_apartamento.tscn" id="13_apartamento"]
 [ext_resource type="PackedScene" path="res://static_building_02_residencial.tscn" id="14_residencial"]
 [ext_resource type="PackedScene" path="res://static_building_03_townhouse.tscn" id="15_townhouse"]
+[ext_resource type="Script" uid="uid://oelwgcr1dskt" path="res://discovery_trigger.gd" id="16_2cqfq"]
+[ext_resource type="Script" uid="uid://ci3v1hrir1n8b" path="res://discovery_hud.gd" id="17_yaehf"]
 
 [sub_resource type="StandardMaterial3D" id="Material_ground"]
 albedo_color = Color(0.14117648, 0.15686275, 0.16862746, 1)
@@ -227,6 +229,9 @@ transparency = 1
 cull_mode = 2
 shading_mode = 0
 albedo_color = Color(0.6039216, 0.6627451, 0.654902, 0.72)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vivmo"]
+size = Vector3(3, 0.8, 3.5)
 
 [node name="Main" type="Node3D" unique_id=547454839]
 metadata/sector_label = "Setor 1 — Ward 8 / leste de Anacostia — limites aproximados"
@@ -528,7 +533,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001785, 0)
 shape = SubResource("Shape_plate_15")
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1233543996 groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.021393, 12.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.021, 0)
 collision_layer = 2
 script = ExtResource("2_player")
 
@@ -783,3 +788,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
 
 [node name="StaticBuilding06_Industrial" parent="StaticBuildings" unique_id=1356603693 instance=ExtResource("12_industrial")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 12)
+
+[node name="DiscoveryTrigger" type="Area3D" parent="." unique_id=355296355]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+collision_mask = 2
+script = ExtResource("16_2cqfq")
+location_name = "Apartamento do Setor 1"
+hud_path = NodePath("../DiscoveryHUD")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DiscoveryTrigger" unique_id=1566077099]
+shape = SubResource("BoxShape3D_vivmo")
+
+[node name="DiscoveryHUD" type="CanvasLayer" parent="." unique_id=460016537]
+script = ExtResource("17_yaehf")
+
+[node name="BG" type="ColorRect" parent="DiscoveryHUD" unique_id=335666561]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = 8.0
+offset_right = 250.0
+offset_bottom = 48.0
+grow_horizontal = 2
+color = Color(0.05, 0.05, 0.08, 0.82)
+
+[node name="Label" type="Label" parent="DiscoveryHUD" unique_id=2006092568]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 10.0
+offset_right = 240.0
+offset_bottom = 46.0
+grow_horizontal = 2
+horizontal_alignment = 1
+vertical_alignment = 1
